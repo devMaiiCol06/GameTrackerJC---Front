@@ -3,7 +3,7 @@ import Library from "../pages/Library";
 import Archievements from "../pages/Archievements";
 import Stats from "../pages/Stats";
 
-export default function Router() {
+const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
@@ -14,4 +14,6 @@ export default function Router() {
             </Routes>
         </BrowserRouter>
     );
-}
+};
+
+export default Router;
