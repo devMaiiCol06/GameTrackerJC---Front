@@ -1,7 +1,9 @@
-export default Library = () => {
+const Library = () => {
     return (
-        <div>
+        <>
             <span>Library</span>
-        </div>
+        </>
     );
-}
+};
+
+export default Library;
