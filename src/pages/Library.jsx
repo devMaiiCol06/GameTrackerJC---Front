@@ -1,7 +1,9 @@
+import Header from "../components/header/Header";
+
 const Library = () => {
     return (
         <>
-            <span>Library</span>
+            <Header />
         </>
     );
 };
