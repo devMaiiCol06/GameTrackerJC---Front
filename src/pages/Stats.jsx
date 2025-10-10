@@ -1,8 +1,10 @@
+import Header from "../components/header/Header";
+
 const Stats = () => {
     return (
-        <div>
-            <span>Stats</span>
-        </div>
+        <>
+            <Header />
+        </>
     );
 }
 
