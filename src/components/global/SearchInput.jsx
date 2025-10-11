@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 const SearchInput = () => {
     return (
         <div className={styles.searchInputContainer}>
-            <Search />
+            <Search color="var(--SearchInputColor)" size={20}/>
             <input placeholder="Search your games..." required />
         </div>
     );
