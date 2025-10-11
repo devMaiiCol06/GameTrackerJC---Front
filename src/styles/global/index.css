@@ -51,6 +51,37 @@
     --SearchInputSdw: -5px 5px 10px #06b5d414;
 }
 
+body.lightTheme {
+    /* ===============TEXTOS=============== */
+    --textColor-Principal: #fff;
+    --textColor-Secondary: #9ca3af;
+    /* ==============FONDOS================ */
+    --bg-Principal: linear-gradient(to right bottom, #111827, #261943);
+    --bg-Glass: rgba(255, 255, 255, 0.05);
+    --bg-BlurGlass: blur(10px);
+    --headerBg: linear-gradient(
+        to right,
+        rgba(88, 28, 135, 0.1),
+        rgba(30, 58, 138, 0.2),
+        rgba(22, 78, 99, 0.1)
+    );
+    --tertiaryBgBttn: #1D3142;
+    --regularBttnBg: #1E355E;
+    /* ==============LOGO================ */
+    --LogoSdw: drop-shadow(0 0 5px #989fd369);
+    --LogoSdw-Hover: drop-shadow(-5px 2px 15px #7d8cff9c);
+    /* =============GENERAL================= */
+    --Sdw-Principal: 0 5px 20px rgba(0, 0, 0, 0.1);
+    --Sdw-Glass: 0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 0 4px 2px rgba(255, 255, 255, 0.2);
+    --BdrGlass: 1px solid rgba(255, 255, 255, 0.3);
+    /* ==============SEARCH INPUT================ */
+    --SearchInputColor: rgb(156 163 175);
+    --SearchInputSdw: -5px 5px 10px #06b5d414;
+}
+
 * {
     font-family: "Geist", sans-serif;
     font-optical-sizing: auto;
