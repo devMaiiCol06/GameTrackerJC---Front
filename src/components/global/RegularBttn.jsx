@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "../../styles/modules/components/RegularBttn.module.css";
+import { useState, useEffect } from "react";
 import { DynamicIcon } from "lucide-react/dynamic";
 
 const RegularBttn = ({ configs }) => {

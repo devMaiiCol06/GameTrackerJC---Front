@@ -3,9 +3,8 @@
     gap: 0.5rem;
     align-items: center;
     justify-content: flex-start;
-    background: var(--SearchInputBg);
+    background: var(--bg-Glass);
     padding: 0.6rem 1rem;
-    border: 2px solid transparent;
     border-radius: 12px;
     width: 340px;
     box-shadow: var(--Sdw-Principal);
@@ -26,8 +25,8 @@ input::placeholder {
 }
 
 .searchInputContainer:focus-within {
-    border-color: #284187;
-    box-shadow: var(--SearchInputSdw);
+    border-color: var(--Bdr-Glass);
+    box-shadow: var(--Sdw-Glass);
     transform: scale(1.01);
 }
 
