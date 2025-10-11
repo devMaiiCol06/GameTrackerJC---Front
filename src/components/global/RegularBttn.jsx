@@ -1,4 +1,4 @@
-import styles from "../../styles/modules/comps/RegularBttn.module.css";
+import styles from "../../styles/modules/components/RegularBttn.module.css";
 import { DynamicIcon } from "lucide-react/dynamic";
 
 const RegularBttn = ({ configs }) => {

@@ -1,4 +1,4 @@
-import styles from "../../styles/modules/comps/Logo.module.css";
+import styles from "../../styles/modules/components/Logo.module.css";
 import "../../styles/global/index.css";
 
 const Logo = () => {

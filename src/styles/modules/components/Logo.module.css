@@ -1,0 +1,64 @@
+.LogoContainer img {
+    width: inherit;
+    display: flex;
+    filter: var(--LogoSdw);
+    cursor: pointer;
+}
+
+.LogoContainer img:hover {
+    filter: var(--LogoSdw-Hover);
+}
+
+@media (width > 1024px) {
+    .LogoContainer {
+        width: 250px;
+    }
+
+    .Imagotipo {
+        display: flex !important;
+    }
+
+    .Logotipo {
+        display: none !important;
+    }
+
+    .Isotipo {
+        display: none !important;
+    }
+}
+
+@media (width < 1024px) {
+    .LogoContainer {
+        width: 250px;
+    }
+
+    .Imagotipo {
+        display: none !important;
+    }
+
+    .Logotipo {
+        display: flex !important;
+    }
+
+    .Isotipo {
+        display: none !important;
+    }
+}
+
+@media (width < 600px) {
+    .LogoContainer {
+        width: 40px;
+    }
+
+    .Imagotipo {
+        display: none !important;
+    }
+
+    .Logotipo {
+        display: none !important;
+    }
+
+    .Isotipo {
+        display: flex !important;
+    }
+}
