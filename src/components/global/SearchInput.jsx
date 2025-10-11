@@ -1,4 +1,4 @@
-import styles from "../../styles/modules/comps/SearchInput.module.css";
+import styles from "../../styles/modules/components/SearchInput.module.css";
 import { Search } from "lucide-react";
 
 const SearchInput = () => {

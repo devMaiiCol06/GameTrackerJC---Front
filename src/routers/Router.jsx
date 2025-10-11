@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Library from "../pages/Library";
-import Archievements from "../pages/Archievements";
-import Stats from "../pages/Stats";
+import Library from "../interfaces/Library";
+import Archievements from "../interfaces/Archievements";
+import Stats from "../interfaces/Stats";
 
 const Router = () => {
     return (

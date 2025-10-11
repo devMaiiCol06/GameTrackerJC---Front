@@ -1,7 +1,7 @@
-import Router from "./routers/Router";
+import ViewsIndex from "./pages/ViewsIndex";
 
 export default function App() {
   return (
-    <Router />
+    <ViewsIndex />
   )
 }
