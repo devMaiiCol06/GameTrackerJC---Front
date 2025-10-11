@@ -10,22 +10,23 @@
     white-space: nowrap;
     border-radius: 16px;
     background: transparent;
-    transition: all 0.3s ease-in-out;
     backdrop-filter: var(--bg-BlurGlass);
     -webkit-backdrop-filter: var(--bg-BlurGlass);
+    transition: all 0.3s ease-in-out;
+    color: var(--textColor-Principal);
 }
 
 .regularBttn:hover {
-    background: var(--regularBttnBg);
+    background: var(--regularBttnBg-Hover);
     text-shadow: 0 0 1px currentColor;
 }
 
 .primaryBgBttn,
-.secondaryBgBttn,
-.tertiaryBgBttn {
+.secondaryBgBttn {
     font-weight: 600;
     box-shadow: var(--Sdw-Glass);
     border: var(--BdrGlass);
+    color: var(--textColorBttn) !important;
 }
 
 .primaryBgBttn {
@@ -42,8 +43,4 @@
 
 .secondaryBgBttn:hover {
     background: var(--secondaryBgBttn-Hover);
-}
-
-.tertiaryBgBttn {
-    background: var(--tertiaryBgBttn);
 }

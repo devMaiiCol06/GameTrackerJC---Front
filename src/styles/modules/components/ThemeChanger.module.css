@@ -1,0 +1,19 @@
+.themeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 11px;
+    cursor: pointer;
+    border-radius: 16rem;
+    background: var(--themeBg-Primary);
+    backdrop-filter: var(--bg-BlurGlass);
+    -webkit-backdrop-filter: var(--bg-BlurGlass);
+    border: var(--BdrGlass);
+    box-shadow: var(--Sdw-Glass);
+}
+
+
+.themeButton:hover {
+    background: var(--themeBg-Secondary);
+}
