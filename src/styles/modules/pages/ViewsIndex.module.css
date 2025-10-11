@@ -3,4 +3,7 @@
     flex-direction: column;
     min-width: 100%;
     min-height: 100vh;
+    background: var(--bg-Principal);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }

@@ -1,6 +1,7 @@
 import styles from "../../styles/modules/components/Header.module.css";
 import RegularBttn from "../global/RegularBttn";
 import SearchInput from "../global/SearchInput";
+import ThemeChanger from "./ThemeChanger.jsx";
 import Logo from "./Logo";
 
 const Header = () => {
@@ -29,13 +30,6 @@ const Header = () => {
             bttnBg: "secondaryBgBttn",
             bttnContext: false,
         },
-        {
-            textContent: false,
-            iconContent: "sun",
-            bttnBg: "tertiaryBgBttn",
-            bttnHover: false,
-            bttnContext: "theme",
-        },
     ];
 
     return (
@@ -47,9 +41,9 @@ const Header = () => {
                     <RegularBttn configs={config} id={index} />
                 ))}
             </div>
+            <ThemeChanger />
         </header>
     );
 };
-
 
 export default Header;
