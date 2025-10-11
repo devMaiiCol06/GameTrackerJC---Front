@@ -35,7 +35,7 @@
     --tertiaryBgBttn: #1D3142;
     --regularBttnBg: #1E355E;
     /* ==============LOGO================ */
-    --LogoSdw: drop-shadow(0 0 15px #7d8cff9c);
+    --LogoSdw: drop-shadow(0 0 5px #989fd369);
     --LogoSdw-Hover: drop-shadow(-5px 2px 15px #7d8cff9c);
     /* =============GENERAL================= */
     --Sdw-Principal: 0 5px 20px rgba(0, 0, 0, 0.1);
