@@ -1,4 +1,4 @@
-import styles from "../../styles/modules/comps/Header.module.css";
+import styles from "../../styles/modules/components/Header.module.css";
 import RegularBttn from "../global/RegularBttn";
 import SearchInput from "../global/SearchInput";
 import Logo from "./Logo";
