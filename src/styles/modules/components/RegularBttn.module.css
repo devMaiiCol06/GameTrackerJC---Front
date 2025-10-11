@@ -3,22 +3,30 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    gap: .5rem;
+    gap: 0.5rem;
+    font-weight: 400;
     border: none;
     cursor: pointer;
     white-space: nowrap;
-    border-radius: 12px;
+    border-radius: 16px;
     background: transparent;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .regularBttn:hover {
     background: var(--regularBttnBg);
+    text-shadow: 0 0 1px currentColor;
 }
 
-.primaryBgBttn, .secondaryBgBttn, .tertiaryBgBttn {
+.primaryBgBttn,
+.secondaryBgBttn,
+.tertiaryBgBttn {
     font-weight: 600;
-    box-shadow: var(--Sdw-Principal);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 0 4px 2px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .primaryBgBttn {
@@ -39,4 +47,11 @@
 
 .tertiaryBgBttn {
     background: var(--tertiaryBgBttn);
+}
+
+.regularBttn {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 }
