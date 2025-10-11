@@ -1,0 +1,42 @@
+.regularBttn {
+    padding: 0.5rem 0.9rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: .5rem;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 12px;
+    background: transparent;
+    transition: all .3s ease-in-out;
+}
+
+.regularBttn:hover {
+    background: var(--regularBttnBg);
+}
+
+.primaryBgBttn, .secondaryBgBttn, .tertiaryBgBttn {
+    font-weight: 600;
+    box-shadow: var(--Sdw-Principal);
+}
+
+.primaryBgBttn {
+    background: var(--primaryBgBttn);
+}
+
+.primaryBgBttn:hover {
+    background: var(--primaryBgBttn-Hover);
+}
+
+.secondaryBgBttn {
+    background: var(--secondaryBgBttn);
+}
+
+.secondaryBgBttn:hover {
+    background: var(--secondaryBgBttn-Hover);
+}
+
+.tertiaryBgBttn {
+    background: var(--tertiaryBgBttn);
+}
