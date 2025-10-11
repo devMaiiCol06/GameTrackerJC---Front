@@ -1,53 +1,55 @@
+import styles from "../../styles/modules/components/Header.module.css";
 import RegularBttn from "../global/RegularBttn";
 import SearchInput from "../global/SearchInput";
 import Logo from "./Logo";
 
 const Header = () => {
-    const headerBttnsList = HeaderBttnsList();
-    return (
-        <>
-            <Logo />
-            <SearchInput />
-            {headerBttnsList.map((config, index) => (
-                <RegularBttn configs={config} id={index} />
-            ))}
-        </>
-    );
-};
-
-function HeaderBttnsList() {
-    return [
+    let buttons = [
         {
             textContent: "Library",
             iconContent: "gamepad-2",
-            bttnBackg: "primaryBttn",
-            bttnHover: "primaryHover",
+            bttnBg: false,
+            bttnContext: "header",
         },
         {
             textContent: "Archievements",
             iconContent: "trophy",
-            bttnBackg: "primaryBttn",
-            bttnHover: "primaryHover",
+            bttnBg: false,
+            bttnContext: "header",
         },
         {
             textContent: "Stats",
             iconContent: "chart-column",
-            bttnBackg: "primaryBttn",
-            bttnHover: "primaryHover",
+            bttnBg: false,
+            bttnContext: "header",
         },
         {
             textContent: "Add Game",
             iconContent: "plus",
-            bttnBackg: "secondaryBttn",
-            bttnHover: "primaryHover",
+            bttnBg: "secondaryBgBttn",
+            bttnContext: false,
         },
         {
             textContent: false,
             iconContent: "sun",
-            bttnBackg: "tertiaryBttn",
+            bttnBg: "tertiaryBgBttn",
             bttnHover: false,
+            bttnContext: "theme",
         },
     ];
-}
+
+    return (
+        <header>
+            <Logo />
+            <SearchInput />
+            <div className={styles.navigateBttns}>
+                {buttons.map((config, index) => (
+                    <RegularBttn configs={config} id={index} />
+                ))}
+            </div>
+        </header>
+    );
+};
+
 
 export default Header;

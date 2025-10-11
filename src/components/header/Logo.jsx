@@ -1,7 +1,8 @@
-import styles from "../../styles/modules/comps/Logo.module.css";
+import styles from "../../styles/modules/components/Logo.module.css";
 import "../../styles/global/index.css";
 
 const Logo = () => {
+
     return (
         <div className={styles.LogoContainer}>
             <img
@@ -10,14 +11,14 @@ const Logo = () => {
                 alt="Imagotipo - GameTracker"
             />
             <img
-                className={`hidden ${styles.Logotipo}`}
+                className={styles.Logotipo}
                 src="/src/assets/Logotipo - GameTracker.png"
-                alt="Imagotipo - GameTracker"
+                alt="Logotipo - GameTracker"
             />
             <img
-                className={`hidden ${styles.Isotipo}`}
+                className={styles.Isotipo}
                 src="/src/assets/Isotipo - GameTracker.png"
-                alt="Imagotipo - GameTracker"
+                alt="Isotipo - GameTracker"
             />
         </div>
     );

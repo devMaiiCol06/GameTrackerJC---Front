@@ -1,0 +1,41 @@
+header {
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2%, 5%, 5%);
+    padding: 1rem 2%;
+    background: var(--headerBg);
+    --webkit-backdrop-filter: blur(12px);
+    box-shadow: 0px 5px 50px rgba(26, 143, 185, 0.3);
+}
+
+.navigateBttns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min-content;
+    gap: 0.5rem;
+}
+
+@media (width < 1024px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    .navigateBttns {
+        margin-top: 1rem;
+    }
+}
+
+@media (width < 720px) {
+    .navigateBttns {
+        width: fit-content;
+        flex-wrap: wrap;
+    }
+}
