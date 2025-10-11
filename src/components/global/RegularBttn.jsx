@@ -1,4 +1,5 @@
-import styles from "../../styles/modules/comps/RegularBttn.module.css";
+import { useNavigate, useLocation } from "react-router-dom";
+import styles from "../../styles/modules/components/RegularBttn.module.css";
 import { DynamicIcon } from "lucide-react/dynamic";
 
 const RegularBttn = ({ configs }) => {
@@ -6,11 +7,44 @@ const RegularBttn = ({ configs }) => {
         return null;
     }
 
-    const bttnBg = configs.bttnBg;
-    const bttnHover = configs.bttnHover;
+    const navigate = useNavigate();
+    const newBttn = getNewBttnConfigs(configs);
+
+    const handleClick = () => {
+        if (newBttn.bttnLink && newBttn.bttnContext === "header") {
+            navigate(`/${newBttn.bttnLink}`);
+        }
+    };
+
+    return (
+        <button
+            type="button"
+            className={`${styles.regularBttn} ${styles[newBttn.bttnBg]}`}
+            onClick={handleClick}
+        >
+            <DynamicIcon name={newBttn.iconContent} color={newBttn.iconColor} />
+            {newBttn.textContent && <span>{newBttn.textContent}</span>}
+        </button>
+    );
+};
+
+function getNewBttnConfigs(configs) {
+    let bttnConfigs = { ...configs };
     let iconColor = "";
 
-    switch (configs.iconContent) {
+    const { pathname } = useLocation();
+    const normalizedPath = pathname.toLowerCase().replace("/", "");
+    const normalizedText = bttnConfigs.textContent
+        ? bttnConfigs.textContent.toLowerCase().replace(" ", "")
+        : "";
+
+    if (bttnConfigs.textContent && normalizedPath === normalizedText) {
+        bttnConfigs.bttnBg = "primaryBgBttn";
+    }
+
+    bttnConfigs = { ...bttnConfigs, bttnLink: normalizedText };
+
+    switch (bttnConfigs.iconContent) {
         case "moon":
             iconColor = "#2c7bcaff";
             break;
@@ -22,18 +56,9 @@ const RegularBttn = ({ configs }) => {
             break;
     }
 
-    return (
-        <button
-            className={`${styles.regularBttn} ${styles[bttnBg]} ${styles[bttnHover]}`}
-        >
-            <DynamicIcon
-                className="IconsHeader"
-                name={configs.iconContent}
-                color={iconColor}
-            />
-            {configs.textContent && <span>{configs.textContent}</span>}
-        </button>
-    );
-};
+    bttnConfigs = { ...bttnConfigs, iconColor: iconColor }
+
+    return bttnConfigs;
+}
 
 export default RegularBttn;

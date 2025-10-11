@@ -1,16 +1,49 @@
-import styles from "../../styles/modules/comps/Header.module.css";
+import styles from "../../styles/modules/components/Header.module.css";
 import RegularBttn from "../global/RegularBttn";
 import SearchInput from "../global/SearchInput";
 import Logo from "./Logo";
 
 const Header = () => {
-    const headerBttnsList = HeaderBttnsList();
+    let buttons = [
+        {
+            textContent: "Library",
+            iconContent: "gamepad-2",
+            bttnBg: false,
+            bttnContext: "header",
+        },
+        {
+            textContent: "Archievements",
+            iconContent: "trophy",
+            bttnBg: false,
+            bttnContext: "header",
+        },
+        {
+            textContent: "Stats",
+            iconContent: "chart-column",
+            bttnBg: false,
+            bttnContext: "header",
+        },
+        {
+            textContent: "Add Game",
+            iconContent: "plus",
+            bttnBg: "secondaryBgBttn",
+            bttnContext: false,
+        },
+        {
+            textContent: false,
+            iconContent: "sun",
+            bttnBg: "tertiaryBgBttn",
+            bttnHover: false,
+            bttnContext: "theme",
+        },
+    ];
+
     return (
         <header>
             <Logo />
             <SearchInput />
             <div className={styles.navigateBttns}>
-                {headerBttnsList.map((config, index) => (
+                {buttons.map((config, index) => (
                     <RegularBttn configs={config} id={index} />
                 ))}
             </div>
@@ -18,39 +51,5 @@ const Header = () => {
     );
 };
 
-function HeaderBttnsList() {
-    return [
-        {
-            textContent: "Library",
-            iconContent: "gamepad-2",
-            bttnBg: "primaryBgBttn",
-            bttnHover: "primaryHover",
-        },
-        {
-            textContent: "Archievements",
-            iconContent: "trophy",
-            bttnBg: false,
-            bttnHover: "primaryHover",
-        },
-        {
-            textContent: "Stats",
-            iconContent: "chart-column",
-            bttnBg: false,
-            bttnHover: "primaryHover",
-        },
-        {
-            textContent: "Add Game",
-            iconContent: "plus",
-            bttnBg: "secondaryBgBttn",
-            bttnHover: "primaryHover",
-        },
-        {
-            textContent: false,
-            iconContent: "sun",
-            bttnBg: "tertiaryBgBttn",
-            bttnHover: false,
-        },
-    ];
-}
 
 export default Header;
