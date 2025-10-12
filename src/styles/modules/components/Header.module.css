@@ -8,11 +8,12 @@ header {
     height: auto;
     align-items: center;
     justify-content: center;
-    gap: clamp(2%, 5%, 5%);
-    padding: 1rem 2%;
+    gap: clamp(20%, 20%, 20%);
+    padding: .7rem 3%;
     background: var(--headerBg);
     --webkit-backdrop-filter: blur(12px);
     box-shadow: 0px 5px 50px rgba(26, 143, 185, 0.3);
+    color: var(--textColor-Principal);
 }
 
 .navigateBttns {

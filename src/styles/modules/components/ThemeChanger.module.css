@@ -11,6 +11,7 @@
     -webkit-backdrop-filter: var(--bg-BlurGlass);
     border: var(--BdrGlass);
     box-shadow: var(--Sdw-Glass);
+    margin-left: 16px;
 }
 
 

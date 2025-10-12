@@ -13,7 +13,7 @@
     backdrop-filter: var(--bg-BlurGlass);
     -webkit-backdrop-filter: var(--bg-BlurGlass);
     transition: all 0.3s ease-in-out;
-    color: var(--textColor-Principal);
+    color: var(--textColor-Secondary);
 }
 
 .regularBttn:hover {

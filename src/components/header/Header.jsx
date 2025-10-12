@@ -35,13 +35,12 @@ const Header = () => {
     return (
         <header>
             <Logo />
-            <SearchInput />
             <div className={styles.navigateBttns}>
                 {buttons.map((config, index) => (
                     <RegularBttn configs={config} id={index} />
                 ))}
+                <ThemeChanger />
             </div>
-            <ThemeChanger />
         </header>
     );
 };
