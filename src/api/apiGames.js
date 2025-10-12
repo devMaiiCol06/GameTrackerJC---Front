@@ -18,9 +18,9 @@ export const getGames = async () => {
 };
 
 // Guardar un Juego
-export const addGame = async () => {
+export const addGame = async (reqData) => {
     try {
-        const response = await api.post("/addGame");
+        const response = await api.post("/addGame", reqData);
         return response.data;
     } catch (error) {
         console.log("Error:", error);
@@ -29,9 +29,9 @@ export const addGame = async () => {
 };
 
 // Eliminar un Juego
-export const deleteGame = async () => {
+export const deleteGame = async (reqData) => {
     try {
-        const response = await api.delete("/deleteGame");
+        const response = await api.delete("/deleteGame", reqData);
         return response.data;
     } catch (error) {
         console.log("Error:", error);
@@ -40,9 +40,9 @@ export const deleteGame = async () => {
 };
 
 // Actualizar un Juego
-export const updateGame = async () => {
+export const updateGame = async (reqData) => {
     try {
-        const response = await api.put("/updateGame");
+        const response = await api.put("/updateGame", reqData);
         return response.data;
     } catch (error) {
         console.log("Error:", error);
