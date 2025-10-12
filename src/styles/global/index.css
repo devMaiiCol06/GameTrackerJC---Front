@@ -3,7 +3,7 @@
 :root {
     /* ===============TEXTOS=============== */
     --textColor-Principal: #fff;
-    --textColor-Secondary: #9ca3af;
+    --textColor-Secondary: #aeb5c1;
     /* ===============BTTNS=============== */
     --textColorBttn: #fff;
     --primaryBgBttn: linear-gradient(
@@ -87,7 +87,6 @@ body.lightMode {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 0.2s ease-out;
 }
 
 html {
