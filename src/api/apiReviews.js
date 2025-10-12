@@ -9,7 +9,7 @@ import { api } from "./apiConnection";
 // Obtener todas las Reviews
 export const getReviews = async () => {
     try {
-        const response = await api.get("/showGames");
+        const response = await api.get("/showReviews");
         return response.data;
     } catch (error) {
         console.log("Error:", error);
@@ -18,9 +18,9 @@ export const getReviews = async () => {
 };
 
 // Guardar una Review
-export const addReview = async () => {
+export const addReview = async (reqData) => {
     try {
-        const response = await api.post("/addGame");
+        const response = await api.post("/addReview", reqData);
         return response.data;
     } catch (error) {
         console.log("Error:", error);
@@ -29,9 +29,9 @@ export const addReview = async () => {
 };
 
 // Eliminar una Review
-export const deleteReview = async () => {
+export const deleteReview = async (reqData) => {
     try {
-        const response = await api.delete("/deleteGame");
+        const response = await api.delete("/deleteReview", reqData);
         return response.data;
     } catch (error) {
         console.log("Error:", error);
@@ -40,9 +40,9 @@ export const deleteReview = async () => {
 };
 
 // Actualizar una Review
-export const updateReview = async () => {
+export const updateReview = async (reqData) => {
     try {
-        const response = await api.put("/updateReview");
+        const response = await api.put("/updateReview", reqData);
         return response.data;
     } catch (error) {
         console.log("Error:", error);
