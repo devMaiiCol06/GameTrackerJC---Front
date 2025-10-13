@@ -8,11 +8,6 @@ const InterfaceHero = ({ context }) => {
             context: "library",
         },
         {
-            title: "Achievements",
-            label: "Track your gaming milestones and accomplishments",
-            context: "archievements",
-        },
-        {
             title: "Gaming Statistics",
             label: "Comprehensive overview of your gaming journey",
             context: "stats",

@@ -29,43 +29,6 @@ const StatsHero = ({ data, context }) => {
             ];
         }
 
-        if (context === "archievements") {
-            return [
-                {
-                    value: data.length,
-                    label: "TOTAL",
-                },
-                {
-                    value: data.filter(
-                        (archiev) => archiev.archievStatus === "unlocked"
-                    ).length,
-                    label: "UNLOCKED",
-                },
-                {
-                    value: data.filter(
-                        (archiev) =>
-                            archiev.archievCategory === "legendary" &&
-                            archiev.archievStatus === "unlocked"
-                    ).length,
-                    label: "LEGENDARY",
-                },
-                {
-                    value:
-                        data.length > 0
-                            ? `${Math.round(
-                                  (data.filter(
-                                      (archiev) =>
-                                          archiev.archievStatus === "unlocked"
-                                  ).length /
-                                      data.length) *
-                                      100
-                              )}%`
-                            : "0%",
-                    label: "COMPLETE",
-                },
-            ];
-        }
-
         // Retorno por defecto para futuros contextos
         return [];
     };
