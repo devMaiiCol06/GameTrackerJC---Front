@@ -3,6 +3,7 @@
     display: flex;
     filter: var(--LogoSdw);
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .LogoContainer img:hover {

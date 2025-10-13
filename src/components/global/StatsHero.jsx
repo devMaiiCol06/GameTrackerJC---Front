@@ -37,7 +37,7 @@ const StatsHero = ({ data, context }) => {
     const stats = calculateStats(data, context);
 
     return (
-        <div className={styles.StatsHeroContainer}>
+        <div className={styles.statsHeroContainer}>
             {stats.map((stat, index) => (
                 <div key={index} className={`${styles.statCounter} ${styles.context}`}>
                     <h3>{stat.value}</h3>

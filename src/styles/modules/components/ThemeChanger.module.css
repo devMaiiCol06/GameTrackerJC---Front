@@ -17,4 +17,6 @@
 
 .themeButton:hover {
     background: var(--themeBg-Secondary);
+    border: var(--BdrGlass);
+    box-shadow: var(--Sdw-Glass);
 }
