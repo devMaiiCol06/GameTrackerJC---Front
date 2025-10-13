@@ -20,7 +20,7 @@ export const getArchievs = async () => {
 // Guardar una Archievement
 export const addArchievs = async (reqData) => {
     try {
-        const response = await api.post("addArchievs", reqData);
+        const response = await api.post("/addArchiev", reqData);
         return response.data;
     } catch (error) {
         console.log("Error:", error);
@@ -31,7 +31,7 @@ export const addArchievs = async (reqData) => {
 // Eliminar una Archievement
 export const deleteArchievs = async (reqData) => {
     try {
-        const response = await api.delete("/deleteArchievs", reqData);
+        const response = await api.delete("/deleteArchiev", reqData);
         return response.data;
     } catch (error) {
         console.log("Error:", error);
