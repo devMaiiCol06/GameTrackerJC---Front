@@ -9,7 +9,7 @@ import { api } from "./apiConnection.js";
 // Obtener todas las Archievements
 export const getArchievs = async () => {
     try {
-        const response = await api.get("/getArchievs");
+        const response = await api.get("/showArchievs");
         return response.data;
     } catch (error) {
         console.log("Error:", error);
