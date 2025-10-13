@@ -37,7 +37,7 @@ const Header = () => {
             <Logo />
             <div className={styles.navigateBttns}>
                 {buttons.map((config, index) => (
-                    <RegularBttn configs={config} id={index} />
+                    <RegularBttn configs={config} key={index} />
                 ))}
                 <ThemeChanger />
             </div>
