@@ -7,8 +7,11 @@ const RegularBttn = ({ configs }) => {
         return null;
     }
 
+    const newBttn =
+        configs.bttnContext === "header"
+            ? getNewBttnConfigs(configs)
+            : { ...configs };
     const navigate = useNavigate();
-    const newBttn = getNewBttnConfigs(configs);
 
     const handleClick = () => {
         if (newBttn.bttnLink && newBttn.bttnContext === "header") {
