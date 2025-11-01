@@ -3,7 +3,12 @@ import RegularBttn from "../../global/RegularBttn";
 import LayoutSwitchBttn from "./LayoutSwitchBttn.jsx";
 import SearchInput from "./SearchInput";
 
-const GameFilters = ({ onAction, definedLayout }) => {
+const GameFilters = ({
+    fncLayout,
+    fncFilter,
+    definedLayout,
+    definedFilter,
+}) => {
     const layoutBttns = [
         {
             iconContent: "grid-2x2",
@@ -15,6 +20,39 @@ const GameFilters = ({ onAction, definedLayout }) => {
         },
     ];
 
+    let filterBttns = [
+        {
+            textContent: "All Games",
+            iconContent: "gallery-vertical-end",
+            bttnBg: false,
+            bttnContext: "filter",
+        },
+        {
+            textContent: "Playing",
+            iconContent: "play",
+            bttnBg: false,
+            bttnContext: "filter",
+        },
+        {
+            textContent: "Completed",
+            iconContent: "trophy",
+            bttnBg: false,
+            bttnContext: "filter",
+        },
+        {
+            textContent: "Wishlist",
+            iconContent: "heart",
+            bttnBg: false,
+            bttnContext: "filter",
+        },
+        {
+            textContent: "Dropped",
+            iconContent: "door-open",
+            bttnBg: false,
+            bttnContext: "filter",
+        },
+    ];
+
     return (
         <div className={styles.gameFiltersContainer}>
             <div>
@@ -22,19 +60,31 @@ const GameFilters = ({ onAction, definedLayout }) => {
                 {layoutBttns.map((button, index) => {
                     const buttonConfig =
                         button.layout === definedLayout
-                            ? { ...button, defined: "activeLayout" }
-                            : { ...button };
+                            ? { ...button, definedLayout: "activeLayout" }
+                            : { ...button, definedLayout: "inactiveLayout" };
                     return (
                         <LayoutSwitchBttn
-                            config={buttonConfig}
+                            configs={buttonConfig}
                             key={index}
-                            onAction={onAction}
+                            onAction={fncLayout}
                         />
                     );
                 })}
             </div>
             <div>
-                <RegularBttn />
+                {filterBttns.map((button, index) => {
+                    const buttonConfig =
+                        button.textContent === definedFilter
+                            ? { ...button, definedFilter: "activeFilter" }
+                            : { ...button, definedFilter: "inactiveFilter" };
+                    return (
+                        <RegularBttn
+                            configs={buttonConfig}
+                            key={index}
+                            onAction={fncFilter}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

@@ -1,14 +1,16 @@
 import styles from "../../../styles/modules/components/LayoutSwitchBttn.module.css";
 import { DynamicIcon } from "lucide-react/dynamic";
 
-const LayoutSwitchBttn = ({ config, onAction }) => {
-    if (!config) {
+const LayoutSwitchBttn = ({ configs, onAction }) => {
+    if (!configs) {
         return null;
     }
 
+    console.log(configs)
+
     const handleClick = () => {
-        if (!config.defined) {
-            onAction(config.layout);
+        if (configs.definedLayout === "inactiveLayout") {
+            onAction(configs.layout);
         }
         return;
     };
@@ -16,12 +18,12 @@ const LayoutSwitchBttn = ({ config, onAction }) => {
     return (
         <button
             type="button"
-            className={`${styles.LayoutSwitchBttnContainer} ${
-                styles[config.defined]
+            className={`${styles.layoutSwitchBttn} ${
+                styles[configs.definedLayout]
             }`}
             onClick={() => handleClick()}
         >
-            <DynamicIcon name={config.iconContent} />
+            <DynamicIcon name={configs.iconContent} />
         </button>
     );
 };

@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import styles from "../../styles/modules/components/RegularBttn.module.css";
 import { DynamicIcon } from "lucide-react/dynamic";
 
-const RegularBttn = ({ configs }) => {
+const RegularBttn = ({ configs, onAction }) => {
     if (!configs) {
         return null;
     }
@@ -16,13 +16,21 @@ const RegularBttn = ({ configs }) => {
     const handleClick = () => {
         if (newBttn.bttnLink && newBttn.bttnContext === "header") {
             navigate(`/${newBttn.bttnLink}`);
+        } else if (
+            configs.definedFilter === "inactiveFilter" &&
+            configs.bttnContext === "filter"
+        ) {
+            onAction(configs.textContent);
         }
+        return;
     };
 
     return (
         <button
             type="button"
-            className={`${styles.regularBttn} ${styles[newBttn.bttnBg]}`}
+            className={`${styles.regularBttn} ${styles[newBttn.bttnBg]} ${
+                styles[configs.definedFilter]
+            }`}
             onClick={handleClick}
         >
             <DynamicIcon name={newBttn.iconContent} color={newBttn.iconColor} />
