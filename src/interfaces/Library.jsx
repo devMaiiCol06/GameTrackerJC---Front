@@ -4,6 +4,7 @@ import StatsHero from "../components/global/StatsHero.jsx";
 import { getGames } from "../api/apiGames.js";
 import { useEffect, useState } from "react";
 import GameFilters from "../components/library/filters/GameFilters.jsx";
+import GameCard from "../components/library/content/GameCard.jsx";
 
 const Library = () => {
     // Obtener que diseno impuso el usuario temporalmente a los juegos
@@ -44,7 +45,7 @@ const Library = () => {
             setLayoutLibrary(newLayout);
         }
         return;
-    };
+    };  
 
     const handleDefinefilter = (newFilter) => {
         // Verificar si el nuevo filtro es diferente al ya establecido
@@ -69,8 +70,16 @@ const Library = () => {
                     definedFilter={definedFilter}
                 />
             </div>
-            <div className={styles[layoutLibrary]}>
-                {/* Aqui iran los juegos */}
+            <div
+                className={`${styles[layoutLibrary]} ${styles[layoutLibrary]}`}
+            >
+                {gamesData.map(
+                    (game, index) => {
+                        return (
+                            <GameCard key={index} gameData={game}  gameFilter={filterLibrary} />
+                        );
+                    }
+                )}
             </div>
         </div>
     );

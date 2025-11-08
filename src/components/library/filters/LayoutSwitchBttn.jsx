@@ -6,8 +6,6 @@ const LayoutSwitchBttn = ({ configs, onAction }) => {
         return null;
     }
 
-    console.log(configs)
-
     const handleClick = () => {
         if (configs.definedLayout === "inactiveLayout") {
             onAction(configs.layout);
