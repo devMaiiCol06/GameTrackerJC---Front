@@ -57,7 +57,7 @@ const Library = () => {
 
     return (
         <div className={styles.libraryContainer}>
-            <div>
+            <div className="completedHero">
                 <InterfaceHero context="library" />
                 <StatsHero data={gamesData} context="library" />
             </div>

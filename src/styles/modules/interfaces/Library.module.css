@@ -1,0 +1,11 @@
+.libraryContainer {
+    display: flex;
+    min-width: 100%;
+    flex-direction: column;
+}
+
+.heroContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

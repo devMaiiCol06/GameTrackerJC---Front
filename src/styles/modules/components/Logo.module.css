@@ -10,7 +10,7 @@
     filter: var(--LogoSdw-Hover);
 }
 
-@media (width > 1024px) {
+@media (width >= 1024px) {
     .LogoContainer {
         width: 250px;
     }
@@ -48,7 +48,7 @@
 
 @media (width < 600px) {
     .LogoContainer {
-        width: 40px;
+        display: none;
     }
 
     .Imagotipo {
@@ -60,6 +60,6 @@
     }
 
     .Isotipo {
-        display: flex !important;
+        display: none !important;
     }
 }

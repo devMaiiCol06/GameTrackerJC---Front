@@ -55,23 +55,7 @@ const GameFilters = ({
 
     return (
         <div className={styles.gameFiltersContainer}>
-            <div>
-                <SearchInput />
-                {layoutBttns.map((button, index) => {
-                    const buttonConfig =
-                        button.layout === definedLayout
-                            ? { ...button, definedLayout: "activeLayout" }
-                            : { ...button, definedLayout: "inactiveLayout" };
-                    return (
-                        <LayoutSwitchBttn
-                            configs={buttonConfig}
-                            key={index}
-                            onAction={fncLayout}
-                        />
-                    );
-                })}
-            </div>
-            <div>
+            <div className={styles.filterBttnsContainer}>
                 {filterBttns.map((button, index) => {
                     const buttonConfig =
                         button.textContent === definedFilter
@@ -85,6 +69,27 @@ const GameFilters = ({
                         />
                     );
                 })}
+            </div>
+            <div className={styles.searchLayoutContainer}>
+                <SearchInput />
+                <div className={styles.layoutBttnsContainer}>
+                    {layoutBttns.map((button, index) => {
+                        const buttonConfig =
+                            button.layout === definedLayout
+                                ? { ...button, definedLayout: "activeLayout" }
+                                : {
+                                      ...button,
+                                      definedLayout: "inactiveLayout",
+                                  };
+                        return (
+                            <LayoutSwitchBttn
+                                configs={buttonConfig}
+                                key={index}
+                                onAction={fncLayout}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

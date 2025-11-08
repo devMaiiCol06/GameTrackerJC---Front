@@ -4,10 +4,12 @@
     align-items: center;
     justify-content: flex-start;
     background: var(--bg-Glass);
-    padding: 0.6rem 1rem;
+    padding: 0.55rem 1rem;
     border-radius: 12px;
-    width: 340px;
+    width: 300px;
     box-shadow: var(--Sdw-Principal);
+    border: var(--BdrGlass);
+    transition: all 0.3s ease-in-out;
 }
 
 input {
@@ -25,13 +27,6 @@ input::placeholder {
 }
 
 .searchInputContainer:focus-within {
-    border-color: var(--Bdr-Glass);
-    box-shadow: var(--Sdw-Glass);
-    transform: scale(1.01);
-}
-
-@media (width < 1024px) {
-    .searchInputContainer {
-        display: none !important;
-    }
+    border: var(--BdrInputFocus);
+    box-shadow: var(--Sdw-Secondary);
 }

@@ -1,3 +1,34 @@
 .statsHeroContainer {
     color: var(--textColor-Principal);
+    display: flex;
+    width: fit-content;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.statCounter {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.statCounter h2 {
+    font-size: 20px;
+}
+
+.statCounter p {
+    color: var(--textColor-Secondary);
+    font-weight: 300;
+    font-size: 14px;
+}
+
+@media (width < 740px) {
+    .statCounter h2 {
+        font-size: 18px;
+    }
+
+    .statCounter p {
+        font-size: 13px;
+    }
 }
