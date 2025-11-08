@@ -1,4 +1,4 @@
-import styles from "./GameCard.module.css";
+import styles from "../../../styles/modules/components/GameCard.module.css";
 import { DynamicIcon } from "lucide-react/dynamic";
 
 const GameCard = ({ gameData, gameFilter }) => {
