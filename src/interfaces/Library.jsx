@@ -71,7 +71,7 @@ const Library = () => {
                 />
             </div>
             <div
-                className={`${styles[layoutLibrary]} ${styles[layoutLibrary]}`}
+                className={`${styles.libraryContent} ${styles[layoutLibrary]}`}
             >
                 {gamesData.map(
                     (game, index) => {
