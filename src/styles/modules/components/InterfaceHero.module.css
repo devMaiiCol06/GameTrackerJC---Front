@@ -1,3 +1,14 @@
 .interfaceHeroContainer {
     color: var(--textColor-Principal);
 }
+
+
+.interfaceHeroContainer h1 {
+    font-size: 30px;
+}
+
+.interfaceHeroContainer p {
+    color: var(--textColor-Secondary);
+    margin-top: 4px;
+    font-weight: 300;
+}

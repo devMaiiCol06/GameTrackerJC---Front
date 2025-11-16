@@ -6,4 +6,5 @@
     background: var(--bg-Principal);
     background-repeat: no-repeat;
     background-size: 100% auto;
+    z-index: -1;
 }
