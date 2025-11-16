@@ -45,7 +45,7 @@ const Library = () => {
             setLayoutLibrary(newLayout);
         }
         return;
-    };  
+    };
 
     const handleDefinefilter = (newFilter) => {
         // Verificar si el nuevo filtro es diferente al ya establecido

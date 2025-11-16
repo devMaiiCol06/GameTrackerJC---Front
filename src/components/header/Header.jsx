@@ -3,7 +3,7 @@ import RegularBttn from "../global/RegularBttn";
 import ThemeChanger from "./ThemeChanger.jsx";
 import Logo from "./Logo";
 
-const Header = () => {
+const Header = ({ fncVisibilityModal }) => {
     let buttons = [
         {
             textContent: "Library",
@@ -21,7 +21,7 @@ const Header = () => {
             textContent: "Add Game",
             iconContent: "plus",
             bttnBg: "secondaryBgBttn",
-            bttnContext: false,
+            bttnContext: "modalNewGame",
         },
     ];
 
@@ -30,7 +30,11 @@ const Header = () => {
             <Logo />
             <div className={styles.navigateBttns}>
                 {buttons.map((config, index) => (
-                    <RegularBttn configs={config} key={index} />
+                    <RegularBttn
+                        configs={config}
+                        key={index}
+                        onAction={fncVisibilityModal}
+                    />
                 ))}
                 <ThemeChanger />
             </div>

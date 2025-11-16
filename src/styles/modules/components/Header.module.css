@@ -14,7 +14,7 @@ header {
     backdrop-filter: blur(8px);
     box-shadow: 0px 5px 50px rgba(26, 143, 185, 0.3);
     color: var(--textColor-Principal);
-    z-index: 1000;
+    z-index: 2;
     border-bottom: var(--borderBottom-Header);
 }
 
