@@ -11,13 +11,15 @@
 
 .modalFormNewGameContainer {
     position: absolute;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     min-width: 100%;
     min-height: 100%;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 10;
+    padding: 2rem 17%;
+    overflow-y: auto;
 }
 
 .show {
@@ -26,4 +28,9 @@
 
 .hidden {
     display: none;
+}
+
+.noScroll {
+    overflow: hidden;
+    height: 100vh;
 }

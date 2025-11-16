@@ -26,13 +26,14 @@
     --bg-BlurGlass: blur(10px);
     --bg-scroll: rgba(255, 255, 255, 0.05);
     --bg-intoScroll: rgba(192, 192, 192, 0.2);
-    --headerBg: linear-gradient(to right,
+    --bg-header: linear-gradient(to right,
             #1c1751,
             rgba(30, 58, 138, 0.9),
             rgba(30, 58, 138, 0.9),
             #182e5e,
             rgba(22, 78, 99, 0.9),
             #1c1751);
+    --bg-heroModal: linear-gradient(to right, rgba(17, 24, 39, 0.5), rgba(30, 58, 138, 0.5), rgba(22, 78, 99, 0.5));
     /* ==============LOGO================ */
     --LogoSdw: drop-shadow(1px -1px 6px rgba(255, 255, 255, 0.2));
     --LogoSdw-Hover: drop-shadow(-2px 2px 15px #7d8cff6a);
@@ -41,9 +42,9 @@
     --Sdw-Secondary: 0 5px 20px rgba(111, 136, 219, 0.1);
     --Sdw-Glass: 0 0 15px rgba(0, 0, 0, 0.1),
         inset -5px 5px 10px rgba(255, 255, 255, 0.4);
-    --BdrGlass: 1px solid rgba(192, 192, 192, 0.2);
-    --BdrInputFocus: 1px solid rgba(111, 219, 160, 0.479);
-    --borderBottom-Header: solid #20428D 1px;
+    --bdr-Glass: 1px solid rgba(192, 192, 192, 0.2);
+    --bdr-InputFocus: 1px solid rgba(111, 219, 160, 0.479);
+    --bdr-BottomHeader: solid #20428D 1px;
     /* ==============SEARCH INPUT================ */
     --SearchInputColor: rgb(156 163 175);
     /* ==============THEME CHANGER================ */
@@ -64,7 +65,7 @@ body.lightMode {
     --bg-Principal: linear-gradient(to right bottom, #f5f3ff, #eef2ff);
     --bg-scroll: rgba(201, 201, 201, 0.103);
     --bg-intoScroll: white;
-    --headerBg: linear-gradient(to right,
+    --bg-header: linear-gradient(to right,
             rgba(169, 228, 249, 0.3),
             rgba(172, 192, 245, 0.3),
             rgba(169, 228, 249, 0.3));
@@ -79,12 +80,12 @@ body.lightMode {
     /* =============GENERAL================= */
     --Sdw-Principal: 0 5px 20px rgba(0, 0, 0, 0.1);
     --Sdw-Glass: 0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 4px 2px rgba(255, 255, 255, 0.2);
-    --borderBottom-Header: solid #c9d7f3 1px;
-    --BdrInputFocus: 2px solid rgba(111, 136, 219, 0.479);
-    --BdrGlass: 1px solid rgba(255, 255, 255, 0.479);
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 0 4px 2px rgba(255, 255, 255, 0.2);
+    --bdr-Glass: 1px solid rgba(255, 255, 255, 0.479);
+    --bdr-BottomHeader: solid #c9d7f3 1px;
+    --bdr-InputFocus: 2px solid rgba(111, 136, 219, 0.479);
 }
 
 * {

@@ -41,7 +41,11 @@ const ViewsIndex = () => {
 
     return (
         <BrowserRouter>
-            <div className={styles.viewsIndex}>
+            <div
+                className={`${styles.viewsIndex} ${
+                    visibilityModalNewGame === "show" ? styles.noScroll : ""
+                }`}
+            >
                 <Header fncVisibilityModal={handleVisibilityModalNewGame} />
                 <main>
                     <Router />
@@ -51,9 +55,7 @@ const ViewsIndex = () => {
                 className={`${styles[visibilityModalNewGame]} ${styles.modalFormNewGameContainer}`}
                 onClick={() => handleVisibilityModalNewGame()}
             >
-                <ModalNewGame
-                    fncVisibilityModal={handleVisibilityModalNewGame}
-                />
+                <ModalNewGame />
             </div>
         </BrowserRouter>
     );

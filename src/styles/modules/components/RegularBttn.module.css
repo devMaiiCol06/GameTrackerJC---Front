@@ -24,7 +24,7 @@
 .activeFilter {
     text-shadow: 0 0 1px currentColor;
     box-shadow: var(--Sdw-Glass);
-    border: var(--BdrGlass);
+    border: var(--bdr-Glass);
     color: var(--textColorBttn) !important;
     backdrop-filter: var(--bg-BlurGlass);
     -webkit-backdrop-filter: var(--bg-BlurGlass);
@@ -49,7 +49,7 @@
 
 .inactiveFilter:hover {
     background: var(--bg-Glass);
-    border: var(--BdrGlass);
+    border: var(--bdr-Glass);
     backdrop-filter: var(--bg-BlurGlass);
     -webkit-backdrop-filter: var(--bg-BlurGlass);
 }
