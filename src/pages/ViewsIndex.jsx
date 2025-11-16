@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import styles from "../styles/modules/pages/ViewsIndex.module.css";
 import "../styles/global/index.css";
 import { BrowserRouter } from "react-router-dom";
-import ModalNewGame from "../components/library/content/ModalNewGame.jsx";
+import ModalNewGame from "../components/modalNewGame/ModalNewGame.jsx";
 import { useState } from "react";
 
 const ViewsIndex = () => {

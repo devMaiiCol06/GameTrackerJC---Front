@@ -1,4 +1,4 @@
-import styles from '../../../styles/modules/components/ModalNewGame.module.css'
+import styles from '../../styles/modules/components/ModalNewGame.module.css'
 
 const ModalNewGame = () => {
     return (
