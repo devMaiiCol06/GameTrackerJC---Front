@@ -1,0 +1,103 @@
+import styles from "./../../styles/modules/components/RegularInputModal.module.css";
+import { useState } from "react";
+import { DynamicIcon } from "lucide-react/dynamic";
+
+const RegularInputModal = ({ config }) => {
+    const [selectedStatus, setSelectedStatus] = useState(null);
+
+    let categories = [
+        "Action",
+        "Adventure",
+        "RPG",
+        "Strategy",
+        "Simulation",
+        "Sport",
+        "Racing",
+        "Puzzle",
+        "Shooter",
+        "Fight",
+        "Open World",
+        "Terror",
+    ];
+
+    let platforms = [
+        "PlayStation",
+        "Xbox",
+        "PC",
+        "Nintendo Switch",
+        "VR",
+        "Phone",
+    ];
+
+    let status = ["Completed", "Playing", "Wishlist", "Dropped"];
+
+    const handleClickStatus = (newStatus) => {
+        setSelectedStatus(newStatus);
+    };
+
+    let field = null;
+    switch (config.type) {
+        case "select":
+            field = (
+                <select id={config.id} name={config.id + "Selected"}>
+                    <option value="">{config.placeholder}</option>
+                    {config.id === "gameGenre"
+                        ? categories.map((category, index) => (
+                              <option value={category} key={index}>
+                                  {category}
+                              </option>
+                          ))
+                        : config.id === "platform"
+                        ? platforms.map((platform, index) => (
+                              <option value={platform} key={index}>
+                                  {platform}
+                              </option>
+                          ))
+                        : null}
+                </select>
+            );
+            break;
+
+        case "status":
+            field = (
+                <>
+                    {status.map((stat, index) => (
+                        <span
+                            className={
+                                selectedStatus === stat
+                                    ? styles.selectedStatus
+                                    : ""
+                            }
+                            onClick={() => handleClickStatus(stat)}
+                            key={index}
+                        >
+                            {stat}
+                        </span>
+                    ))}
+                </>
+            );
+            break;
+
+        default:
+            field = (
+                <input
+                    type={config.type}
+                    id={config.id}
+                    placeholder={config.placeholder}
+                />
+            );
+            break;
+    }
+
+    return (
+        <div className={styles.RegularInputModalContainer}>
+            <label htmlFor={config.id}>
+                <DynamicIcon name={config.icon} size={20} />
+                {config.label}
+            </label>
+            {field}
+        </div>
+    );
+};
+
+export default RegularInputModal;

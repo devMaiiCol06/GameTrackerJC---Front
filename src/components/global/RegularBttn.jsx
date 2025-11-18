@@ -21,7 +21,7 @@ const RegularBttn = ({ configs, onAction }) => {
             configs.bttnContext === "filter"
         ) {
             onAction(configs.textContent);
-        } else if (configs.bttnContext === "modalNewGame") {
+        } else if (configs.bttnContext === "modalGame") {
             onAction();
         }
         return;
@@ -35,7 +35,7 @@ const RegularBttn = ({ configs, onAction }) => {
             }`}
             onClick={handleClick}
         >
-            <DynamicIcon name={newBttn.iconContent} color={newBttn.iconColor} />
+            {newBttn.iconContent &&<DynamicIcon name={newBttn.iconContent} color={newBttn.iconColor} />}
             {newBttn.textContent && <span>{newBttn.textContent}</span>}
         </button>
     );

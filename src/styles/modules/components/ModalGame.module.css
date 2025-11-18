@@ -1,4 +1,4 @@
-.ModalNewGameContainer {
+.ModalGameContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -6,7 +6,7 @@
     z-index: 11;
 }
 
-.modalNewGameContent {
+.modalGameContent {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -19,7 +19,7 @@
     overflow: hidden;
 }
 
-.newGameHeroContainer {
+.GameHeroContainer {
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
@@ -28,7 +28,7 @@
     border-bottom: var(--bdr-BottomHeader);
 }
 
-.newGameHeroContent {
+.GameHeroContent {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -38,7 +38,7 @@
     gap: 1rem;
 }
 
-.newGameIcon {
+.GameIcon {
     padding: 10px;
     border-radius: 10px;
     background: var(--bg-BlurGlass);
@@ -46,27 +46,44 @@
     box-shadow: var(--Sdw-Glass);
 }
 
-.newGameHeroText {
+@media (width <= 570px) {
+    .GameIcon {
+        display: none;
+    }
+}
+
+.GameHeroText {
     text-align: left;
     gap: 0.5rem;
 }
 
-.newGameHeroTitle {
+.GameHeroTitle {
     font-size: 30px;
     font-weight: 700;
     color: var(--textColor-Principal);
 }
 
-.newGameHeroDescription {
+.GameHeroDescription {
     color: var(--textColor-Secondary);
 }
 
 .closeIcon {
-    padding: 3px;
-    background: gray;
-    border-radius: 50%;
-    border: 1px solid var(--bg-Secondary);
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 16rem;
+    background: var(--themeBg-Primary);
+    border: var(--bdr-Glass);
+}
+
+.closeIcon:hover {
+    background: var(--themeBg-Secondary);
+    border: var(--bdr-Glass);
+    box-shadow: var(--Sdw-Glass);
 }

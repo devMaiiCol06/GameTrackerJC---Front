@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import styles from "../styles/modules/pages/ViewsIndex.module.css";
 import "../styles/global/index.css";
 import { BrowserRouter } from "react-router-dom";
-import ModalNewGame from "../components/modalNewGame/ModalNewGame.jsx";
+import ModalGame from "../components/modalGame/ModalGame.jsx";
 import { useState } from "react";
 
 const ViewsIndex = () => {
@@ -18,22 +18,22 @@ const ViewsIndex = () => {
         return stored;
     };
 
-    const [visibilityModalNewGame, setVisibilityModalNewGame] =
+    const [visibilityModalGame, setVisibilityModalGame] =
         useState(getInitialVisibility);
 
-    const handleVisibilityModalNewGame = () => {
+    const handleVisibilityModalGame = () => {
         // Cambiar la visibilidad
-        switch (visibilityModalNewGame) {
+        switch (visibilityModalGame) {
             case "hidden":
-                setVisibilityModalNewGame("show");
+                setVisibilityModalGame("show");
                 sessionStorage.setItem("visibilityModal", "show");
                 break;
             case "show":
-                setVisibilityModalNewGame("hidden");
+                setVisibilityModalGame("hidden");
                 sessionStorage.setItem("visibilityModal", "hidden");
                 break;
             default:
-                setVisibilityModalNewGame("hidden");
+                setVisibilityModalGame("hidden");
                 sessionStorage.setItem("visibilityModal", "hidden");
                 break;
         }
@@ -43,19 +43,18 @@ const ViewsIndex = () => {
         <BrowserRouter>
             <div
                 className={`${styles.viewsIndex} ${
-                    visibilityModalNewGame === "show" ? styles.noScroll : ""
+                    visibilityModalGame === "show" ? styles.noScroll : ""
                 }`}
             >
-                <Header fncVisibilityModal={handleVisibilityModalNewGame} />
+                <Header fncVisibilityModal={handleVisibilityModalGame} />
                 <main>
                     <Router />
                 </main>
             </div>
             <div
-                className={`${styles[visibilityModalNewGame]} ${styles.modalFormNewGameContainer}`}
-                onClick={() => handleVisibilityModalNewGame()}
+                className={`${styles[visibilityModalGame]} ${styles.modalFormGameContainer}`}
             >
-                <ModalNewGame />
+                <ModalGame fncVisibilityModal={handleVisibilityModalGame} />
             </div>
         </BrowserRouter>
     );
