@@ -8,7 +8,7 @@
     border-radius: 12px;
     width: 300px;
     box-shadow: var(--Sdw-Principal);
-    border: var(--BdrGlass);
+    border: var(--bdr-Glass);
     transition: all 0.3s ease-in-out;
 }
 
@@ -27,6 +27,6 @@ input::placeholder {
 }
 
 .searchInputContainer:focus-within {
-    border: var(--BdrInputFocus);
+    border: var(--bdr-InputFocus);
     box-shadow: var(--Sdw-Secondary);
 }

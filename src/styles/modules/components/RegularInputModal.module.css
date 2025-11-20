@@ -1,0 +1,103 @@
+.inputContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--Sdw-Principal);
+    background-color: var(--bg-Glass);
+    border: var(--bdr-Glass);
+    padding: 0.4rem 0.6rem;
+    border-radius: 10px;
+    color: var(--textColor-Secondary);
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    outline: none;
+}
+
+.inputContent:focus {
+    border: var(--bdr-InputFocus);
+}
+
+.selectedStatus {
+    box-shadow: var(--Sdw-Glass);
+    background: var(--primaryBgBttn);
+    backdrop-filter: blur(var(--bg-BlurGlass));
+    color: var(--textColorBttn);
+}
+
+.RegularInputModalContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    color: var(--textColor-Secondary);
+    height: fit-content;
+}
+
+label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 15px;
+    margin-left: 0.5rem;
+}
+
+option {
+    background-color: var(--bg-selectOption);
+}
+
+.statusContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+}
+
+.statusOption0 {
+    grid-area: 1 / 1 / 2 / 2;
+}
+.statusOption1 {
+    grid-area: 1 / 2 / 2 / 3;
+}
+.statusOption2 {
+    grid-area: 2 / 1 / 3 / 2;
+}
+.statusOption3 {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.statusOption0,
+.statusOption1,
+.statusOption2,
+.statusOption3 {
+    cursor: pointer;
+}
+
+.textareaContent {
+    resize: none;
+    min-width: 100%;
+    min-height: 4.5em;
+    max-height: 4.5em;
+    font-family: inherit;
+}
+
+.textareaContent::-webkit-scrollbar {
+    width: 10px;
+}
+
+.textareaContent::-webkit-scrollbar-track {
+    background: var(--bg-scroll);
+    border-radius: 10px;
+}
+
+.textareaContent::-webkit-scrollbar-thumb {
+    background: var(--bg-intoScroll);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.textareaContent::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-intoScroll);
+}

@@ -1,0 +1,36 @@
+.wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+.wrapper::-webkit-scrollbar-track {
+    background: var(--bg-scroll);
+    border-radius: 10px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+    background: var(--bg-intoScroll);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-intoScroll);
+}
+
+.wrapper :global(.scroll-content) {
+    background: transparent;
+}
+
+.wrapper :global(.scrollbar-track) {
+    background: var(--bg-scroll);
+    width: 10px;
+    border-radius: 10px;
+}
+
+.wrapper :global(.scrollbar-thumb) {
+    background: var(--bg-intoScroll) !important;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}

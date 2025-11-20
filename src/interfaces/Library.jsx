@@ -2,9 +2,10 @@ import styles from "../styles/modules/interfaces/Library.module.css";
 import InterfaceHero from "../components/global/InterfaceHero.jsx";
 import StatsHero from "../components/global/StatsHero.jsx";
 import { getGames } from "../api/apiGames.js";
-import { useEffect, useState } from "react";
 import GameFilters from "../components/library/filters/GameFilters.jsx";
 import GameCard from "../components/library/content/GameCard.jsx";
+import { useEffect, useState } from "react";
+import SmoothScrollbarWrapper from "../components/global/SmoothScrollbarWrapper.jsx";
 
 const Library = () => {
     // Obtener que diseno impuso el usuario temporalmente a los juegos
@@ -19,6 +20,7 @@ const Library = () => {
         sessionStorage.setItem("libraryFilter", "All Games");
         definedFilter = "All Games";
     }
+
     // Hook para almacenar los juegos recibidos de la API
     const [gamesData, setGamesData] = useState([]);
     // Hook para almacenar el diseno de vista de los juegos
@@ -45,7 +47,7 @@ const Library = () => {
             setLayoutLibrary(newLayout);
         }
         return;
-    };  
+    };
 
     const handleDefinefilter = (newFilter) => {
         // Verificar si el nuevo filtro es diferente al ya establecido
@@ -70,17 +72,30 @@ const Library = () => {
                     definedFilter={definedFilter}
                 />
             </div>
-            <div
-                className={`${styles.libraryContent} ${styles[layoutLibrary]}`}
+
+            <SmoothScrollbarWrapper
+                style={{
+                    height: "600px",
+                    overflow: "auto",
+                    margin: "2rem 0 4rem 0",
+                    borderBottom: "var(--bdr-Glass)",
+                    borderTop: "var(--bdr-Glass)",
+                }}
             >
-                {gamesData.map(
-                    (game, index) => {
+                <div
+                    className={`${styles.libraryContent} ${styles[layoutLibrary]}`}
+                >
+                    {gamesData.map((game, index) => {
                         return (
-                            <GameCard key={index} gameData={game}  gameFilter={filterLibrary} />
+                            <GameCard
+                                key={index}
+                                gameData={game}
+                                gameFilter={filterLibrary}
+                            />
                         );
-                    }
-                )}
-            </div>
+                    })}
+                </div>
+            </SmoothScrollbarWrapper>
         </div>
     );
 };
