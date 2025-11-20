@@ -21,8 +21,8 @@ const RegularBttn = ({ configs, onAction }) => {
             configs.bttnContext === "filter"
         ) {
             onAction(configs.textContent);
-        } else if (configs.bttnContext === "modalGame") {
-            onAction();
+        } else if (configs.bttnContext === "modalNewGame") {
+            onAction("newGame");
         }
         return;
     };

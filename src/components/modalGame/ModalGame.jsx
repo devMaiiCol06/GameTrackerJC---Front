@@ -3,7 +3,7 @@ import { DynamicIcon } from "lucide-react/dynamic";
 import RegularInputModal from "./RegularInputModal.jsx";
 import SmoothScrollbarWrapper from "../global/SmoothScrollbarWrapper.jsx";
 
-const ModalGame = ({ onAction }) => {
+const ModalGame = ({ heroContent, onAction }) => {
     let inputsConfig = [
         {
             id: "gameTitle",
@@ -98,10 +98,10 @@ const ModalGame = ({ onAction }) => {
                         />
                         <div className={styles.GameHeroText}>
                             <h2 className={styles.GameHeroTitle}>
-                                Add New Game
+                                {heroContent.title}
                             </h2>
                             <p className={styles.GameHeroDescription}>
-                                Add a new game to your collection
+                                {heroContent.subtitle}
                             </p>
                         </div>
                     </div>
@@ -128,14 +128,16 @@ const ModalGame = ({ onAction }) => {
                             className={styles.cancelButton}
                             onClick={() => onAction.fncVisibilityModal()}
                         >
-                            Cancelar
+                            {heroContent.bttnText ? "Cancel" : "Close"}
                         </button>
-                        <button
-                            className={styles.saveButton}
-                            onClick={() => handleClickActionBttn()}
-                        >
-                            <DynamicIcon name="save" size={17} /> Add Game
-                        </button>
+                        {heroContent.bttnText && (
+                            <button
+                                className={styles.saveButton}
+                                onClick={() => handleClickActionBttn()}
+                            >
+                                <DynamicIcon name="save" size={17} /> {heroContent.bttnText}
+                            </button>
+                        )}
                     </div>
                 </SmoothScrollbarWrapper>
             </div>

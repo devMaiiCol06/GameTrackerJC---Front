@@ -21,7 +21,7 @@ const Header = ({ fncVisibilityModal }) => {
             textContent: "Add Game",
             iconContent: "plus",
             bttnBg: "secondaryBgBttn",
-            bttnContext: "modalGame",
+            bttnContext: "modalNewGame",
         },
     ];
 

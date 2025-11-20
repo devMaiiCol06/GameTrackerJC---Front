@@ -8,13 +8,18 @@ import { addGame } from "../api/apiGames.js";
 import { useEffect, useState } from "react";
 
 const ViewsIndex = () => {
+    const [modalHeroContent, setModalHeroContent] = useState(null);
+
     const [reqGameData, setReqGameData] = useState(null);
     const [responseMessage, setResponseMessage] = useState(null);
 
     useEffect(() => {
         const fetchGames = async () => {
             try {
-                console.log("Datos enviados desde ViewsIndex a addGame:", reqGameData);
+                console.log(
+                    "Datos enviados desde ViewsIndex a addGame:",
+                    reqGameData
+                );
                 const response = await addGame(reqGameData);
                 setResponseMessage(response.message);
             } catch (error) {
@@ -37,10 +42,29 @@ const ViewsIndex = () => {
     // Hook para almacenar el estado de la visibilidad del modal de nuevo juego
     const [visibilityModalGame, setVisibilityModalGame] = useState("hidden");
 
-    const handleVisibilityModalGame = () => {
+    const handleVisibilityModalGame = (reqContext) => {
         // Cambiar la visibilidad
         switch (visibilityModalGame) {
             case "hidden":
+                if (reqContext === "newGame") {
+                    setModalHeroContent({
+                        title: "Add New Game",
+                        subtitle: "Add a new game to your collection",
+                        bttnText: "Add Game",
+                    });
+                } else if (reqContext === "editGame") {
+                    setModalHeroContent({
+                        title: "Edit Game",
+                        subtitle: "Edit the details of your game",
+                        bttnText: "Save Changes",
+                    });
+                } else if (reqContext === "viewGame") {
+                    setModalHeroContent({
+                        title: "Details Game",
+                        subtitle: "View the details of your game",
+                        bttnText: false,
+                    });
+                }
                 setVisibilityModalGame("show");
                 break;
             case "show":
@@ -67,12 +91,15 @@ const ViewsIndex = () => {
             <div
                 className={`${styles[visibilityModalGame]} ${styles.modalFormGameContainer}`}
             >
-                <ModalGame
-                    onAction={{
-                        fncVisibilityModal: handleVisibilityModalGame,
-                        receiveReqGameData: handleReceiveReqGameData,
-                    }}
-                />
+                {modalHeroContent && (
+                    <ModalGame
+                        heroContent={modalHeroContent}
+                        onAction={{
+                            fncVisibilityModal: handleVisibilityModalGame,
+                            receiveReqGameData: handleReceiveReqGameData,
+                        }}
+                    />
+                )}
             </div>
         </BrowserRouter>
     );
