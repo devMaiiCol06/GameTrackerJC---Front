@@ -108,6 +108,7 @@ const RegularInputModal = ({ config }) => {
                     id={config.id}
                     placeholder={config.placeholder}
                     className={styles.inputContent}
+                    autoComplete="off"
                 />
             );
             break;
