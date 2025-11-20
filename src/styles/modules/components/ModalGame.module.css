@@ -7,6 +7,7 @@
 }
 
 .modalGameContent {
+    overflow: auto;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -16,7 +17,26 @@
     position: relative;
     box-shadow: var(--Sdw-Glass);
     border: var(--bdr-Glass);
-    overflow: hidden;
+}
+
+.modalGameContent::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modalGameContent::-webkit-scrollbar-track {
+    background: var(--bg-scroll);
+    border-radius: 10px;
+}
+
+.modalGameContent::-webkit-scrollbar-thumb {
+    background: var(--bg-intoScroll);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.modalGameContent::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-intoScroll);
 }
 
 .GameHeroContainer {
@@ -60,11 +80,11 @@
 .GameHeroTitle {
     font-size: 30px;
     font-weight: 700;
-    color: var(--textColor-Principal);
+    color: var(--textColorBttn);
 }
 
 .GameHeroDescription {
-    color: var(--textColor-Secondary);
+    color: var(--textColorBttn);
 }
 
 .closeIcon {
@@ -86,4 +106,77 @@
     background: var(--themeBg-Secondary);
     border: var(--bdr-Glass);
     box-shadow: var(--Sdw-Glass);
+}
+
+.GameFormContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+    column-gap: 1rem;
+    row-gap: 1.5rem;
+    padding: 1rem;
+}
+
+.gameTitle {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.gameGenre {
+    grid-area: 1 / 2 / 2 / 3;
+}
+.platform {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.status {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.imageURL {
+    grid-area: 3 / 1 / 4 / 3;
+}
+
+.description {
+    grid-area: 4 / 1 / 5 / 3;
+}
+
+.releaseDate {
+    grid-area: 5 / 1 / 6 / 2;
+}
+
+.hoursPlayed {
+    grid-area: 5 / 2 / 6 / 3;
+}
+
+.actionBttnsContainer {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.actionBttnsContainer button {
+    padding: .5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    font-weight: 500;
+    border-radius: 10px;
+    border: var(--bdr-Glass);
+    cursor: pointer;
+    font-size: 14px
+}
+
+.actionBttnsContainer button:hover {
+    box-shadow: var(--Sdw-Glass);
+}
+
+.saveButton {
+    background: var(--primaryBgBttn);
+    backdrop-filter: blur(var(--bg-BlurGlass));
+    color: var(--textColorBttn);
 }

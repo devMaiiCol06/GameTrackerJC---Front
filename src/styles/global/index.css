@@ -53,6 +53,7 @@
         rgba(30, 58, 138, 0.5),
         rgba(22, 78, 99, 0.5)
     );
+    --bg-selectOption: #1F193A;
     /* ==============LOGO================ */
     --LogoSdw: drop-shadow(1px -1px 6px rgba(255, 255, 255, 0.2));
     --LogoSdw-Hover: drop-shadow(-2px 2px 15px #7d8cff6a);
@@ -96,6 +97,7 @@ body.lightMode {
         rgba(30, 58, 138, 0.5),
         rgba(22, 78, 99, 0.5)
     );
+    --bg-selectOption: #ffffff;
     --regularBttnBg: #1e355e;
     /* ==============LOGO================ */
     --LogoSdw: drop-shadow(0 0 5px #ffffff96);
@@ -123,7 +125,6 @@ body.lightMode {
 
 html {
     min-height: 100%;
-    scroll-behavior: smooth;
 }
 
 body {

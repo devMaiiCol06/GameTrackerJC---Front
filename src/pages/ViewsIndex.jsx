@@ -4,37 +4,50 @@ import styles from "../styles/modules/pages/ViewsIndex.module.css";
 import "../styles/global/index.css";
 import { BrowserRouter } from "react-router-dom";
 import ModalGame from "../components/modalGame/ModalGame.jsx";
-import { useState } from "react";
+import { addGame } from "../api/apiGames.js";
+import { useEffect, useState } from "react";
 
 const ViewsIndex = () => {
-    // Hook para almacenar el estado de la visibilidad del modal de nuevo juego
-    // Si la llave no existe en sessionStorage, crearla con valor "hidden"
-    const getInitialVisibility = () => {
-        const stored = sessionStorage.getItem("visibilityModal");
-        if (!stored) {
-            sessionStorage.setItem("visibilityModal", "hidden");
-            return "hidden";
+    const [reqGameData, setReqGameData] = useState(null);
+    const [responseMessage, setResponseMessage] = useState(null);
+
+    useEffect(() => {
+        const fetchGames = async () => {
+            try {
+                console.log("Datos enviados desde ViewsIndex a addGame:", reqGameData);
+                const response = await addGame(reqGameData);
+                setResponseMessage(response.message);
+            } catch (error) {
+                console.error("Error en fetch:", error);
+            }
+        };
+        if (reqGameData) {
+            fetchGames();
         }
-        return stored;
+    }, [reqGameData]);
+
+    if (responseMessage) {
+        console.log("Datos recibidos en ViewsIndex:", responseMessage);
+    }
+
+    const handleReceiveReqGameData = (reqData) => {
+        setReqGameData(reqData);
     };
 
-    const [visibilityModalGame, setVisibilityModalGame] =
-        useState(getInitialVisibility);
+    // Hook para almacenar el estado de la visibilidad del modal de nuevo juego
+    const [visibilityModalGame, setVisibilityModalGame] = useState("hidden");
 
     const handleVisibilityModalGame = () => {
         // Cambiar la visibilidad
         switch (visibilityModalGame) {
             case "hidden":
                 setVisibilityModalGame("show");
-                sessionStorage.setItem("visibilityModal", "show");
                 break;
             case "show":
                 setVisibilityModalGame("hidden");
-                sessionStorage.setItem("visibilityModal", "hidden");
                 break;
             default:
                 setVisibilityModalGame("hidden");
-                sessionStorage.setItem("visibilityModal", "hidden");
                 break;
         }
     };
@@ -54,7 +67,12 @@ const ViewsIndex = () => {
             <div
                 className={`${styles[visibilityModalGame]} ${styles.modalFormGameContainer}`}
             >
-                <ModalGame fncVisibilityModal={handleVisibilityModalGame} />
+                <ModalGame
+                    onAction={{
+                        fncVisibilityModal: handleVisibilityModalGame,
+                        receiveReqGameData: handleReceiveReqGameData,
+                    }}
+                />
             </div>
         </BrowserRouter>
     );

@@ -39,7 +39,11 @@ const RegularInputModal = ({ config }) => {
     switch (config.type) {
         case "select":
             field = (
-                <select id={config.id} name={config.id + "Selected"}>
+                <select
+                    id={config.id}
+                    name={config.id}
+                    className={styles.inputContent}
+                >
                     <option value="">{config.placeholder}</option>
                     {config.id === "gameGenre"
                         ? categories.map((category, index) => (
@@ -47,7 +51,7 @@ const RegularInputModal = ({ config }) => {
                                   {category}
                               </option>
                           ))
-                        : config.id === "platform"
+                        : config.id === "gamePlatform"
                         ? platforms.map((platform, index) => (
                               <option value={platform} key={index}>
                                   {platform}
@@ -60,21 +64,29 @@ const RegularInputModal = ({ config }) => {
 
         case "status":
             field = (
-                <>
-                    {status.map((stat, index) => (
-                        <span
-                            className={
-                                selectedStatus === stat
-                                    ? styles.selectedStatus
-                                    : ""
-                            }
-                            onClick={() => handleClickStatus(stat)}
-                            key={index}
-                        >
-                            {stat}
-                        </span>
-                    ))}
-                </>
+                <div className={styles.statusContainer}>
+                    {status.map((stat, index) => {
+                        let statusClass = styles["statusOption" + index] || "";
+                        return (
+                            <span
+                                id={
+                                    selectedStatus === stat
+                                        ? "selectedStatus"
+                                        : ""
+                                }
+                                className={`${
+                                    selectedStatus === stat
+                                        ? styles.selectedStatus
+                                        : ""
+                                } ${styles.inputContent} ${statusClass}`.trim()}
+                                onClick={() => handleClickStatus(stat)}
+                                key={index}
+                            >
+                                {stat}
+                            </span>
+                        );
+                    })}
+                </div>
             );
             break;
 
@@ -84,6 +96,7 @@ const RegularInputModal = ({ config }) => {
                     type={config.type}
                     id={config.id}
                     placeholder={config.placeholder}
+                    className={styles.inputContent}
                 />
             );
             break;
@@ -92,7 +105,7 @@ const RegularInputModal = ({ config }) => {
     return (
         <div className={styles.RegularInputModalContainer}>
             <label htmlFor={config.id}>
-                <DynamicIcon name={config.icon} size={20} />
+                <DynamicIcon name={config.icon} size={15} />
                 {config.label}
             </label>
             {field}

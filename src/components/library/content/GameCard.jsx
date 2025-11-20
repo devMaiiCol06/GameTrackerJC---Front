@@ -59,11 +59,11 @@ const GameCard = ({ gameData, gameFilter }) => {
                     <img
                         className={styles.gameImage}
                         src={gameData.gameImage}
-                        alt={gameData.gameName}
+                        alt={gameData.gameTitle}
                     />
                 </div>
                 <div className={styles.gameInfo}>
-                    <h3 className={styles.gameTitle}>{gameData.gameName}</h3>
+                    <h3 className={styles.gameTitle}>{gameData.gameTitle}</h3>
                     <span className={styles.gameGenre}>
                         {gameData.gameGenre}
                     </span>

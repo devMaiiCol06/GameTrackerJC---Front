@@ -1,9 +1,9 @@
 import styles from "../../styles/modules/components/ModalGame.module.css";
 import { DynamicIcon } from "lucide-react/dynamic";
 import RegularInputModal from "./RegularInputModal.jsx";
-import RegularBttn from "../global/RegularBttn.jsx";
+import SmoothScrollbarWrapper from "../global/SmoothScrollbarWrapper.jsx";
 
-const ModalGame = ({ fncVisibilityModal }) => {
+const ModalGame = ({ onAction }) => {
     let inputsConfig = [
         {
             id: "gameTitle",
@@ -20,47 +20,67 @@ const ModalGame = ({ fncVisibilityModal }) => {
             icon: "swords",
         },
         {
-            id: "platform",
+            id: "gamePlatform",
             label: "Platform",
             type: "select",
             placeholder: "Select a platform here",
             icon: "monitor",
         },
         {
-            id: "status",
+            id: "gameStatus",
             label: "Status *",
             type: "status",
             icon: "trophy",
         },
         {
-            id: "imageURL",
+            id: "gameImage",
             label: "Cover Image URL",
             type: "text",
             placeholder: "https://example.com/image.jpg",
             icon: "image",
         },
         {
-            id: "description",
+            id: "gameDescription",
             label: "Description",
             type: "textarea",
             placeholder: "Enter a brief description of the game",
             icon: "text",
         },
         {
-            id: "releaseDate",
+            id: "gameReleaseDate",
             label: "Release Date",
             type: "date",
             placeholder: "",
             icon: "calendar",
         },
         {
-            id: "hoursPlayed",
+            id: "gameHoursPlayed",
             label: "Hours Played",
             type: "number",
             placeholder: 0,
             icon: "clock",
         },
     ];
+
+    const handleClickActionBttn = () => {
+        const reqData = {
+            gameTitle: document.getElementById("gameTitle").value || "",
+            gameDescription:
+                document.getElementById("gameDescription").value || "",
+            gameGenre: document.getElementById("gameGenre").value || "",
+            gameStatus:
+                document.getElementById("selectedStatus").textContent || "",
+            gamePlatform: document.getElementById("gamePlatform").value || "",
+            gameImage: document.getElementById("gameImage").value || "",
+            gameReleaseDate:
+                document.getElementById("gameReleaseDate").value || "",
+            gameHoursPlayed:
+                document.getElementById("gameHoursPlayed").value || 0,
+        };
+
+        onAction.receiveReqGameData(reqData);
+        onAction.fncVisibilityModal();
+    };
 
     return (
         <div
@@ -73,7 +93,7 @@ const ModalGame = ({ fncVisibilityModal }) => {
                         <DynamicIcon
                             name={"gamepad-2"}
                             size={58}
-                            color="var(--textColor-Principal)"
+                            color="var(--textColorBttn)"
                             className={styles.GameIcon}
                         />
                         <div className={styles.GameHeroText}>
@@ -87,23 +107,37 @@ const ModalGame = ({ fncVisibilityModal }) => {
                     </div>
                     <DynamicIcon
                         name={"x"}
-                        color="var(--textColor-Secondary)"
+                        color="var(--textColorBttn)"
                         size={35}
                         className={styles.closeIcon}
-                        onClick={() => fncVisibilityModal()}
+                        onClick={() => onAction.fncVisibilityModal()}
                     />
                 </div>
-                <div className={styles.GameFormContainer}>
-                    <div className={styles.GameFormContent}>
-                        {inputsConfig.map((input, index) => (
-                            <RegularInputModal config={input} key={index} />
-                        ))}
+                <SmoothScrollbarWrapper>
+                    <div className={styles.GameFormContainer}>
+                        <div className={styles.GameFormContent}>
+                            {inputsConfig.map((input, index) => (
+                                <div className={styles[input.id]} key={index}>
+                                    <RegularInputModal config={input} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-                <div className={styles.actionBttnsContainer}>
-                    <button onClick={() => fncVisibilityModal()}>Cancelar</button>
-                    <button className={styles.saveButton}><DynamicIcon name="save" /> Add Game</button>
-                </div>
+                    <div className={styles.actionBttnsContainer}>
+                        <button
+                            className={styles.cancelButton}
+                            onClick={() => onAction.fncVisibilityModal()}
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            className={styles.saveButton}
+                            onClick={() => handleClickActionBttn()}
+                        >
+                            <DynamicIcon name="save" size={17} /> Add Game
+                        </button>
+                    </div>
+                </SmoothScrollbarWrapper>
             </div>
         </div>
     );
