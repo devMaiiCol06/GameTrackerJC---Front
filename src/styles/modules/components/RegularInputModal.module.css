@@ -42,7 +42,6 @@ label {
     margin-left: 0.5rem;
 }
 
-
 option {
     background-color: var(--bg-selectOption);
 }
@@ -68,6 +67,37 @@ option {
     grid-area: 2 / 2 / 3 / 3;
 }
 
-.statusOption0, .statusOption1, .statusOption2, .statusOption3 {
+.statusOption0,
+.statusOption1,
+.statusOption2,
+.statusOption3 {
     cursor: pointer;
+}
+
+.textareaContent {
+    resize: none;
+    min-width: 100%;
+    min-height: 4.5em;
+    max-height: 4.5em;
+    font-family: inherit;
+}
+
+.textareaContent::-webkit-scrollbar {
+    width: 10px;
+}
+
+.textareaContent::-webkit-scrollbar-track {
+    background: var(--bg-scroll);
+    border-radius: 10px;
+}
+
+.textareaContent::-webkit-scrollbar-thumb {
+    background: var(--bg-intoScroll);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.textareaContent::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-intoScroll);
 }

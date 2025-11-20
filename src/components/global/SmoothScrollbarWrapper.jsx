@@ -27,6 +27,7 @@
 
 import { useRef, useEffect } from "react";
 import Scrollbar from "smooth-scrollbar";
+import styles from "./../../styles/modules/components/SmoothScrollbarWrapper.module.css";
 
 export default function SmoothScrollbarWrapper({
     children,
@@ -61,6 +62,7 @@ export default function SmoothScrollbarWrapper({
                 ...appliedStyle,
             }}
             {...props}
+            className={styles.wrapper}
         >
             {children}
         </div>

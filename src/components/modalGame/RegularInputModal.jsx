@@ -1,6 +1,7 @@
 import styles from "./../../styles/modules/components/RegularInputModal.module.css";
 import { useState } from "react";
 import { DynamicIcon } from "lucide-react/dynamic";
+import SmoothScrollbarWrapper from "../global/SmoothScrollbarWrapper";
 
 const RegularInputModal = ({ config }) => {
     const [selectedStatus, setSelectedStatus] = useState(null);
@@ -87,6 +88,16 @@ const RegularInputModal = ({ config }) => {
                         );
                     })}
                 </div>
+            );
+            break;
+
+        case "textarea":
+            field = (
+                <textarea
+                    id={config.id}
+                    placeholder={config.placeholder}
+                    className={`${styles.inputContent} ${styles.textareaContent}`}
+                />
             );
             break;
 
