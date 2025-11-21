@@ -9,7 +9,7 @@
     overflow: hidden;
     box-shadow: var(--Sdw-Principal);
     background-color: var(--bg-Glass);
-    border: var(--BdrGlass);
+    border: var(--bdr-Glass);
     color: var(--textColor-Principal);
     transition: all 0.3s ease-in-out;
     z-index: 11;
@@ -18,7 +18,7 @@
 .GameCardContainer:hover {
     box-shadow: var(--Sdw-Secondary);
     transform: translate(0.3rem, -0.3rem);
-    border: var(--borderBottom-Header);
+    border: var(--bdr-BottomHeader);
 }
 
 .generalGameCard {
@@ -148,7 +148,7 @@
     font-size: 12px;
     font-weight: 400;
     cursor: pointer;
-    border: var(--BdrGlass);
+    border: var(--bdr-Glass);
     border-radius: 8px;
     padding: 3px 8px;
     background: var(--bg-Glass);

@@ -9,7 +9,7 @@
     background: var(--themeBg-Primary);
     backdrop-filter: var(--bg-BlurGlass);
     -webkit-backdrop-filter: var(--bg-BlurGlass);
-    border: var(--BdrGlass);
+    border: var(--bdr-Glass);
     box-shadow: var(--Sdw-Glass);
     margin-left: 16px;
 }
@@ -17,6 +17,6 @@
 
 .themeButton:hover {
     background: var(--themeBg-Secondary);
-    border: var(--BdrGlass);
+    border: var(--bdr-Glass);
     box-shadow: var(--Sdw-Glass);
 }
