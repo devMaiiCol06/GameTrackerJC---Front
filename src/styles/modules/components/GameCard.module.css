@@ -56,16 +56,23 @@
     font-size: 0.65rem;
     box-shadow: var(--Sdw-Glass);
     border-radius: 9999px;
+    backdrop-filter: blur(20px);
 }
 
 .gamePlatform {
     padding: 6px;
 }
 
+.gamePlatform,
+.gameStatus {
+    background: var(--bg-Glass);
+    text-shadow: 0px 0px 1px gray;
+    font-weight: 600;
+}
+
 .gameStatus,
 .gameGenre {
-    padding: 3px 6px;
-    backdrop-filter: blur(10px);
+    padding: 2px 8px !important;
 }
 
 .completed {
