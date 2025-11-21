@@ -1,5 +1,11 @@
 import styles from "../../../styles/modules/components/GameCard.module.css";
 import { DynamicIcon } from "lucide-react/dynamic";
+import PlayStation from "../../global/platforms/Playstation";
+import Nintendo from "../../global/platforms/Nintendo";
+import Xbox from "../../global/platforms/Xbox";
+import PC from "../../global/platforms/PC";
+import Smartphone from "../../global/platforms/Smartphone";
+import VR from "../../global/platforms/VR";
 
 const GameCard = ({ gameData, gameFilter }) => {
     if (gameFilter !== "All Games") {
@@ -52,9 +58,46 @@ const GameCard = ({ gameData, gameFilter }) => {
                             })()}
                             {gameData.gameStatus}
                         </span>
-                        <span className={styles.gamePlatform}>
-                            {gameData.gamePlatform}
-                        </span>
+                        {gameData.gamePlatform && (
+                            <span className={styles.gamePlatform}>
+                                {(() => {
+                                    switch (gameData.gamePlatform) {
+                                        case "PC":
+                                            return (
+                                                <PC height={16} width={16} />
+                                            );
+                                        case "PlayStation":
+                                            return (
+                                                <PlayStation
+                                                    height={16}
+                                                    width={16}
+                                                />
+                                            );
+                                        case "Xbox":
+                                            return (
+                                                <Xbox height={16} width={16} />
+                                            );
+                                        case "Nintendo":
+                                            return (
+                                                <Nintendo
+                                                    width={16}
+                                                    height={16}
+                                                />
+                                            );
+                                        case "Phone":
+                                            return (
+                                                <Smartphone height={16} width={16} />
+                                            );
+                                        case "VR":
+                                            return (
+                                                <VR height={16} width={16} />
+                                            );
+                                        default:
+                                            return null;
+                                    }
+                                })()}
+                            </span>
+                        )}
                     </div>
                     <img
                         className={styles.gameImage}
