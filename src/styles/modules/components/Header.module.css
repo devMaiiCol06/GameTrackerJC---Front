@@ -8,7 +8,7 @@ header {
     height: auto;
     align-items: center;
     justify-content: space-between;
-    padding: .7rem 4%;
+    padding: 0.7rem 4%;
     background: var(--bg-header);
     --webkit-backdrop-filter: blur(9=8px);
     backdrop-filter: blur(8px);
