@@ -20,6 +20,24 @@
     padding: 2rem 18.5%;
 }
 
+@media (width < 1024px) {
+    .modalFormGameContainer {
+        padding: 2rem 10%;
+    }
+}
+
+@media (width < 768px) {
+    .modalFormGameContainer {
+        padding: 2rem 5%;
+    }
+}
+
+@media (width < 480px) {
+    .modalFormGameContainer {
+        padding: 1rem 2%;
+    }
+}
+
 .show {
     display: block;
 }
