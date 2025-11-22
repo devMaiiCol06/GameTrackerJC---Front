@@ -1,0 +1,168 @@
+.GameCardContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--Sdw-Principal);
+    background-color: var(--bg-Glass);
+    border: var(--bdr-Glass);
+    color: var(--textColor-Principal);
+    transition: all 0.3s ease-in-out;
+    z-index: 11;
+}
+
+.GameCardContainer:hover {
+    box-shadow: var(--Sdw-Secondary);
+    transform: translate(0.3rem, -0.3rem);
+    border: var(--bdr-BottomHeader);
+}
+
+.generalGameCard {
+    display: grid;
+    grid-template-rows: 60% 40% !important;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.gameHead {
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+
+.gameStatusContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    padding: 0.65rem;
+    top: 0;
+    left: 0;
+}
+
+.gamePlatform,
+.gameStatus,
+.gameGenre {
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    display: flex;
+    font-size: 0.65rem;
+    box-shadow: var(--Sdw-Glass);
+    border-radius: 9999px;
+    backdrop-filter: blur(20px);
+}
+
+.gamePlatform {
+    padding: 6px;
+}
+
+.gamePlatform,
+.gameStatus {
+    background: var(--bg-Glass);
+    text-shadow: 0px 0px 1px gray;
+    font-weight: 600;
+}
+
+.gameStatus,
+.gameGenre {
+    padding: 2px 8px !important;
+}
+
+.completed {
+    background: #14532d27;
+    color: #24cf63;
+}
+
+.wishlist {
+    background-color: #83186c4d;
+    color: #ec4899;
+}
+
+.playing {
+    background-color: #1e3a8a4d;
+    color: #60a5fa;
+}
+
+.dropped {
+    background-color: #7f1d1d4d;
+    color: #f87171;
+}
+
+.gameImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gameInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    box-shadow: var(--Sdw-Principal);
+    gap: 0.6rem;
+}
+
+.gameTitle {
+    color: var(--textColor-Principal);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.gameGenre {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--textColor-Secondary);
+    background: var(--bg-gameCategory);
+    width: fit-content;
+    box-shadow: none;
+    padding: 3px 8px;
+}
+
+.gameDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--textColor-Secondary);
+}
+
+.gameHoursPlayed,
+.gameDateCompleted,
+.gameDateRegister {
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    display: flex;
+}
+
+.gameDetailsButton {
+    color: var(--textColor-Principal);
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    border: var(--bdr-Glass);
+    border-radius: 8px;
+    padding: 3px 8px;
+    background: var(--bg-Glass);
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    box-shadow: var(--Sdw-Principal);
+}
+
+.gameDetailsButton:hover {
+    box-shadow: var(--Sdw-Glass);
+}

@@ -10,26 +10,28 @@
     white-space: nowrap;
     border-radius: 16px;
     background: transparent;
-    backdrop-filter: var(--bg-BlurGlass);
-    -webkit-backdrop-filter: var(--bg-BlurGlass);
     transition: all 0.3s ease-in-out;
     color: var(--textColor-Secondary);
+    border: 1px solid transparent;
 }
 
 .regularBttn:hover {
-    background: var(--regularBttnBg-Hover);
     text-shadow: 0 0 1px currentColor;
 }
 
 .primaryBgBttn,
-.secondaryBgBttn {
-    font-weight: 600;
+.secondaryBgBttn,
+.activeFilter {
+    text-shadow: 0 0 1px currentColor;
     box-shadow: var(--Sdw-Glass);
-    border: var(--BdrGlass);
+    border: var(--bdr-Glass);
     color: var(--textColorBttn) !important;
+    backdrop-filter: var(--bg-BlurGlass);
+    -webkit-backdrop-filter: var(--bg-BlurGlass);
 }
 
-.primaryBgBttn {
+.primaryBgBttn,
+.activeFilter {
     background: var(--primaryBgBttn);
 }
 
@@ -43,4 +45,17 @@
 
 .secondaryBgBttn:hover {
     background: var(--secondaryBgBttn-Hover);
+}
+
+.inactiveFilter:hover {
+    background: var(--bg-Glass);
+    border: var(--bdr-Glass);
+    backdrop-filter: var(--bg-BlurGlass);
+    -webkit-backdrop-filter: var(--bg-BlurGlass);
+}
+
+.disabled {
+    opacity: 0.6 !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
 }

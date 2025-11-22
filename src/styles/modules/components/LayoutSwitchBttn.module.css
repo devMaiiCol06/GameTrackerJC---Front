@@ -1,0 +1,26 @@
+.layoutSwitchBttn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--Sdw-Principal);
+    background-color: var(--bg-Glass);
+    border: var(--bdr-Glass);
+    padding: 0.4rem;
+    border-radius: 10px;
+    color: var(--textColor-Secondary);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.inactiveLayout:hover {
+    box-shadow: var(--Sdw-Secondary);
+    border: var(--bdr-InputFocus);
+}
+
+.activeLayout {
+    background: var(--secondaryBgBttn);
+    text-shadow: 0 0 1px currentColor;
+    box-shadow: var(--Sdw-Glass);
+    border: var(--bdr-Glass);
+    color: var(--textColorBttn) !important;
+}

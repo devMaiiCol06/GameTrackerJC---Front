@@ -20,7 +20,7 @@ const InterfaceHero = ({ context }) => {
                 .filter((cont) => context === cont.context)
                 .map((cont) => (
                     <div key={cont.title}>
-                        <h2>{cont.title}</h2>
+                        <h1>{cont.title}</h1>
                         <p>{cont.label}</p>
                     </div>
                 ))}

@@ -7,13 +7,15 @@ header {
     width: 100%;
     height: auto;
     align-items: center;
-    justify-content: center;
-    gap: 40%;
-    padding: .7rem 3%;
-    background: var(--headerBg);
-    --webkit-backdrop-filter: blur(12px);
+    justify-content: space-between;
+    padding: 0.7rem 4%;
+    background: var(--bg-header);
+    --webkit-backdrop-filter: blur(9=8px);
+    backdrop-filter: blur(8px);
     box-shadow: 0px 5px 50px rgba(26, 143, 185, 0.3);
     color: var(--textColor-Principal);
+    z-index: 2;
+    border-bottom: var(--bdr-BottomHeader);
 }
 
 .navigateBttns {
@@ -27,14 +29,16 @@ header {
 @media (width < 1024px) {
     header {
         flex-wrap: wrap;
-    }
-
-    .navigateBttns {
-        margin-top: 1rem;
+        align-items: center;
     }
 }
 
-@media (width < 720px) {
+@media (width <=768px) {
+    header {
+        gap: 1rem;
+        justify-content: center;
+    }
+
     .navigateBttns {
         width: fit-content;
         flex-wrap: wrap;

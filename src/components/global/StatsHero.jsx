@@ -11,9 +11,9 @@ const StatsHero = ({ data, context }) => {
                 },
                 {
                     value: data.filter(
-                        (game) => game.gameStatus === "In Progress"
+                        (game) => game.gameStatus === "Playing"
                     ).length,
-                    label: "In Progress",
+                    label: "Playing",
                 },
                 {
                     value: data.filter(
@@ -40,7 +40,7 @@ const StatsHero = ({ data, context }) => {
         <div className={styles.statsHeroContainer}>
             {stats.map((stat, index) => (
                 <div key={index} className={`${styles.statCounter} ${styles.context}`}>
-                    <h3>{stat.value}</h3>
+                    <h2>{stat.value}</h2>
                     <p>{stat.label}</p>
                 </div>
             ))}
