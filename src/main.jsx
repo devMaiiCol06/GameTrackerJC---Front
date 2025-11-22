@@ -1,7 +1,19 @@
-import { StrictMode } from "react";
+// ====================================================================== 
+
+// ** Importaciones **
+
+// import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles/global/index.css";
 import App from "./App.jsx";
+
+// ====================================================================== 
+
+// ** Componente principal **
+
+// ====================================================================== 
+
+// ** Renderizado **
 
 createRoot(document.getElementById("root")).render(
     // <StrictMode>

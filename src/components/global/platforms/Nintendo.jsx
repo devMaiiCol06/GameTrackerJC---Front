@@ -1,5 +1,14 @@
+// ====================================================================== 
+
+// Componente Nintendo: 
+// Props: width, height
+// Retorna: img Nintendo
+
+// ======================================================================
+
 const Nintendo = ({ width, height }) => {
     return (
+        // Renderizar la imagen del logo de Nintendo
         <img
             width={width}
             height={height}
@@ -7,5 +16,9 @@ const Nintendo = ({ width, height }) => {
         />
     );
 };
-    
+
+// ====================================================================== 
+
+// ** Exportación **
+
 export default Nintendo;

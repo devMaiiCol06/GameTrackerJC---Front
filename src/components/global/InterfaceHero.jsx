@@ -1,6 +1,26 @@
+// ======================================================================
+
+// Importaciones Generales
+
 import styles from "../../styles/modules/components/InterfaceHero.module.css";
 
+// ======================================================================
+
+// Componente InterfaceHero
+// Props: context
+// Retorna: InterfaceHero
+
+// ======================================================================
+
+// ** Props **
+// context: string library o stats
+
+// ======================================================================
+
 const InterfaceHero = ({ context }) => {
+    // ** Variables **
+
+    // Contenido Hero
     const contentsHero = [
         {
             title: "Game Library",
@@ -14,10 +34,15 @@ const InterfaceHero = ({ context }) => {
         },
     ];
 
+    // ** Renderizado **
+
     return (
+        // Renderizar un div con la clase interfaceHeroContainer y el contenido del array contentsHero segun el contexto
         <div className={styles.interfaceHeroContainer}>
             {contentsHero
+            // Filtrado de contenido segun el contexto
                 .filter((cont) => context === cont.context)
+                // Mapeo de contenido
                 .map((cont) => (
                     <div key={cont.title}>
                         <h1>{cont.title}</h1>
@@ -27,5 +52,9 @@ const InterfaceHero = ({ context }) => {
         </div>
     );
 };
+
+// ======================================================================
+
+// ** Exportacion **
 
 export default InterfaceHero;

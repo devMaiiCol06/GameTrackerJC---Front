@@ -25,37 +25,72 @@
     -> ...props: cualquier otro atributo que quieras pasar al div (por ejemplo className, id, data- attrs).
 */
 
+// ====================================================================== 
+
+// Importaciones Generales
+
 import { useRef, useEffect } from "react";
 import Scrollbar from "smooth-scrollbar";
 import styles from "./../../styles/modules/components/SmoothScrollbarWrapper.module.css";
 
-export default function SmoothScrollbarWrapper({
+// ====================================================================== 
+
+// Componente SmoothScrollbarWrapper
+// Props: children, style, ...props
+// Retorno: div con el scrollbar
+// Descripcion: Componente que envuelve contenido y reemplaza el scroll nativo por un scroll "suave" usando una librería externa "smooth-scrollbar". Su trabajo principal es: crear el scrollbar cuando el componente se monta, aplicarle una "inercia" (damping) y destruirlo cuando el componente se desmonta. De esta forma se obtiene desplazamiento más fluido sin tocar mucho el resto del código.
+
+// ====================================================================== 
+
+// ** Props **
+// children: Contenido o Componentes que se quieren hacer desplazables
+// style: Estilos para el div que envuelve el contenido
+// ...props: Props adicionales para el div
+
+// ====================================================================== 
+
+function SmoothScrollbarWrapper({
     children,
     style = {},
     ...props
 }) {
+    // ** Variables **
+
+    // Desestructuracion de props
     const {
         height = "100vh",
         overflow = "auto",
         damping = 0.03,
         ...styleRest
     } = style;
-
+    // Referencia al div
     const wrapperRef = useRef(null);
+    // Estilos aplicados
+    const appliedStyle = { height, overflow, ...styleRest };
 
+    // ** Funciones **
+
+    // useEffect para inicializar y destruir el scrollbar
     useEffect(() => {
-        let scrollbar;
+        let scrollbar; // Declarar variable para el scrollbar
+
+        // Verificar si el div existe
         if (wrapperRef.current) {
+            // Inicializar el scrollbar con la opción damping
             scrollbar = Scrollbar.init(wrapperRef.current, { damping });
         }
+
+        // Retornar una funcion de limpieza
         return () => {
+            // Destruir el scrollbar cuando el componente se desmonta
             if (scrollbar) scrollbar.destroy();
         };
     }, [damping]);
 
-    const appliedStyle = { height, overflow, ...styleRest };
+    // ** Renderizado **
 
     return (
+        // Renderizar un div con la referencia, los estilos aplicados y el contenido (children)
         <div
             ref={wrapperRef}
             style={{
@@ -68,3 +103,9 @@ export default function SmoothScrollbarWrapper({
         </div>
     );
 }
+
+// ====================================================================== 
+
+// ** Exportacion **
+
+export default SmoothScrollbarWrapper;
