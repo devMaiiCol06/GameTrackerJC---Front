@@ -10,7 +10,8 @@ import { useEffect, useState } from "react";
 const ViewsIndex = () => {
     const [modalContent, setModalContent] = useState(null);
 
-    const [reqApiData, setReqApiData] = useState({});
+    const [refreshTrigger, setRefreshTrigger] = useState(0);
+    const [reqApiData, setReqApiData] = useState(null);
 
     useEffect(() => {
         const fetchGames = async () => {
@@ -23,9 +24,6 @@ const ViewsIndex = () => {
             };
 
             let apiMethod = apiImports[reqApiData.apiFunctionality];
-            console.log("API Method to call:", reqApiData.apiFunctionality);
-            console.log("Request Data:", reqApiData);
-            console.log("API Method Function:", apiMethod);
 
             if (!apiMethod) {
                 console.error(
@@ -60,7 +58,9 @@ const ViewsIndex = () => {
                             `Calling deleteGame with`,
                             reqApiData.gameId
                         );
-                        response = await apiMethod(reqApiData.gameId);
+                        response = await apiMethod({
+                            data: { gameId: reqApiData.gameId },
+                        });
                     }
                 }
                 console.log("API response (full):", response);
@@ -69,6 +69,8 @@ const ViewsIndex = () => {
                         "Response message:",
                         response.message ?? response
                     );
+                    // Trigger refresh on successful response
+                    setRefreshTrigger((prev) => prev + 1);
                 } else {
                     console.warn("No response from API (undefined/null)");
                 }
@@ -95,14 +97,16 @@ const ViewsIndex = () => {
                 setModalContent({
                     title: "Add New Game",
                     subtitle: "Add a new game to your collection",
-                    bttnText: "Add Game",
+                    bttnFnText: "Add Game",
+                    bttnAltText: "Cancel",
                     functionality: "addGame",
                 });
             } else if (reqContext.context === "editGame") {
                 setModalContent({
                     title: "Edit Game",
                     subtitle: "Edit the details of your game",
-                    bttnText: "Save Changes",
+                    bttnFnText: "Save Changes",
+                    bttnAltText: "Cancel",
                     gameData: reqContext.gameData,
                     functionality: "updateGame",
                 });
@@ -110,10 +114,13 @@ const ViewsIndex = () => {
                 setModalContent({
                     title: "Details Game",
                     subtitle: "View the details of your game",
-                    bttnText: "Edit Game",
+                    bttnFnText: "Edit Game",
+                    bttnAltText: "Close",
                     gameData: reqContext.gameData,
+                    functionality: "viewGame",
                 });
             }
+
             setVisibilityModalGame("show");
             return;
         } else {
@@ -131,7 +138,10 @@ const ViewsIndex = () => {
             >
                 <Header fncVisibilityModal={handleVisibilityModalGame} />
                 <main>
-                    <Router fncVisibilityModal={handleVisibilityModalGame} />
+                    <Router
+                        fncVisibilityModal={handleVisibilityModalGame}
+                        refreshTrigger={refreshTrigger}
+                    />
                 </main>
             </div>
             {modalContent && (

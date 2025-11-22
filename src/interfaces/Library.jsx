@@ -7,7 +7,7 @@ import GameCard from "../components/library/content/GameCard.jsx";
 import { useEffect, useState } from "react";
 import SmoothScrollbarWrapper from "../components/global/SmoothScrollbarWrapper.jsx";
 
-const Library = ({ fncVisibilityModal }) => {
+const Library = ({ fncVisibilityModal, refreshTrigger }) => {
     // Obtener que diseno impuso el usuario temporalmente a los juegos
     let definedLayout = sessionStorage.getItem("libraryLayout");
     if (!definedLayout) {

@@ -32,6 +32,7 @@ const RegularInputModal = ({ config }) => {
     let status = ["Completed", "Playing", "Wishlist", "Dropped"];
 
     const handleClickStatus = (newStatus) => {
+        if (config.context === "viewGame") return;
         setSelectedStatus(newStatus);
     };
 
@@ -127,7 +128,6 @@ const RegularInputModal = ({ config }) => {
         const element = document.getElementById(config.id);
         if (!element) return;
 
-        // solo asignar value a elementos válidos
         const tag = element.tagName.toLowerCase();
         if (tag === "input" || tag === "textarea" || tag === "select") {
             let value = config.gameData[config.id] ?? "";
@@ -150,6 +150,14 @@ const RegularInputModal = ({ config }) => {
             }
 
             element.value = value;
+
+            if (config.context === "viewGame") {
+                element.disabled = true;
+                element.classList.add(styles.disabled);
+            } else {
+                element.disabled = false;
+                element.classList.remove(styles.disabled);
+            }
         }
     }, [config]);
 

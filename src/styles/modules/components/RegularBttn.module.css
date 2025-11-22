@@ -53,3 +53,9 @@
     backdrop-filter: var(--bg-BlurGlass);
     -webkit-backdrop-filter: var(--bg-BlurGlass);
 }
+
+.disabled {
+    opacity: 0.6 !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+}

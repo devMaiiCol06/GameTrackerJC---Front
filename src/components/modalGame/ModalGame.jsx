@@ -4,10 +4,19 @@ import RegularInputModal from "./RegularInputModal.jsx";
 import SmoothScrollbarWrapper from "../global/SmoothScrollbarWrapper.jsx";
 
 const ModalGame = ({ context, onAction }) => {
+    if (!context) {
+        console.log("No context provided to ModalGame");
+        return null;
+    }
+    if (!onAction || !onAction.fncVisibilityModal) {
+        console.log("No onAction.fncVisibilityModal provided to ModalGame");
+        return null;
+    }
+
     let inputsConfig = [
         {
             id: "gameTitle",
-            label: "Game Title",
+            label: "Game Title *",
             type: "text",
             placeholder: "Enter the game title here",
             icon: "joystick",
@@ -34,7 +43,7 @@ const ModalGame = ({ context, onAction }) => {
         },
         {
             id: "gameImage",
-            label: "Cover Image URL",
+            label: "Cover Image URL *",
             type: "text",
             placeholder: "https://example.com/image.jpg",
             icon: "image",
@@ -63,19 +72,51 @@ const ModalGame = ({ context, onAction }) => {
     ];
 
     const handleClickActionBttn = () => {
-        const reqData = {
-            gameTitle: document.getElementById("gameTitle")?.value || "",
-            gameDescription:
-                document.getElementById("gameDescription")?.value || "",
-            gameGenre: document.getElementById("gameGenre")?.value || "",
-            gameStatus:
-                document.getElementById("selectedStatus")?.textContent || "",
-            gamePlatform: document.getElementById("gamePlatform")?.value || "",
-            gameImage: document.getElementById("gameImage")?.value || "",
-            gameReleaseDate: document.getElementById("gameReleaseDate")?.value || "",
-            gameHoursPlayed:
-                document.getElementById("gameHoursPlayed")?.value || 0,
-        };
+        if (context.functionality === "viewGame") {
+            onAction.fncVisibilityModal({
+                context: "editGame",
+                gameData: context.gameData,
+            });
+            return;
+        }
+
+        let reqData = null;
+
+        if (
+            context.functionality === "addGame" ||
+            context.functionality === "updateGame"
+        ) {
+            reqData = {
+                gameTitle: document.getElementById("gameTitle")?.value || "",
+                gameDescription:
+                    document.getElementById("gameDescription")?.value || "",
+                gameGenre: document.getElementById("gameGenre")?.value || "",
+                gameStatus:
+                    document.getElementById("selectedStatus")?.textContent ||
+                    "",
+                gamePlatform:
+                    document.getElementById("gamePlatform")?.value || "",
+                gameImage: document.getElementById("gameImage")?.value || "",
+                gameReleaseDate:
+                    document.getElementById("gameReleaseDate")?.value || "",
+                gameHoursPlayed:
+                    document.getElementById("gameHoursPlayed")?.value || 0,
+            };
+
+            // Include ID for updateGame
+            if (context.functionality === "updateGame" && context.gameData) {
+                reqData.gameId =
+                    context.gameData.id ||
+                    context.gameData._id ||
+                    context.gameData.gameId;
+                console.log(
+                    "Game ID extracted for update:",
+                    reqData.gameId,
+                    "from gameData:",
+                    context.gameData
+                );
+            }
+        }
 
         onAction.receiveReqGameData({
             gameData: reqData,
@@ -84,7 +125,21 @@ const ModalGame = ({ context, onAction }) => {
         onAction.fncVisibilityModal();
     };
 
-    console.log("Context en ModalGame:", context);
+    const handleDeleteAction = () => {
+        if (!context.gameData) return;
+
+        const gameId =
+            context.gameData.id ||
+            context.gameData._id ||
+            context.gameData.gameId;
+
+        onAction.receiveReqGameData({
+            gameId: gameId,
+            apiFunctionality: "deleteGame",
+        });
+        onAction.fncVisibilityModal();
+    };
+
     return (
         <div
             className={styles.ModalGameContainer}
@@ -128,8 +183,14 @@ const ModalGame = ({ context, onAction }) => {
                                                       ...input,
                                                       gameData:
                                                           context.gameData,
+                                                      context:
+                                                          context.functionality,
                                                   }
-                                                : input
+                                                : {
+                                                      ...input,
+                                                      context:
+                                                          context.functionality,
+                                                  }
                                         }
                                     />
                                 </div>
@@ -141,17 +202,28 @@ const ModalGame = ({ context, onAction }) => {
                             className={styles.cancelButton}
                             onClick={() => onAction.fncVisibilityModal()}
                         >
-                            {context.bttnText === "Add Game"
-                                ? "Cancel"
-                                : "Close"}
+                            {context.bttnAltText}
                         </button>
-                        {context.bttnText && (
+                        {context.bttnFnText && (
                             <button
                                 className={styles.saveButton}
                                 onClick={() => handleClickActionBttn()}
                             >
                                 <DynamicIcon name="save" size={17} />
-                                {context.bttnText}
+                                {context.bttnFnText}
+                            </button>
+                        )}
+                        {context.functionality === "updateGame" && (
+                            <button
+                                className={styles.deleteButton}
+                                onClick={handleDeleteAction}
+                                style={{
+                                    backgroundColor: "#ef4444",
+                                    color: "white",
+                                }}
+                            >
+                                <DynamicIcon name="trash-2" size={17} />
+                                Delete Game
                             </button>
                         )}
                     </div>
