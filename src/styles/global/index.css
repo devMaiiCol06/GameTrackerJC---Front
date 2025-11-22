@@ -53,7 +53,7 @@
         rgba(30, 58, 138, 0.5),
         rgba(22, 78, 99, 0.5)
     );
-    --bg-selectOption: #1F193A;
+    --bg-selectOption: #1f193a;
     /* ==============LOGO================ */
     --LogoSdw: drop-shadow(1px -1px 6px rgba(255, 255, 255, 0.2));
     --LogoSdw-Hover: drop-shadow(-2px 2px 15px #7d8cff6a);
