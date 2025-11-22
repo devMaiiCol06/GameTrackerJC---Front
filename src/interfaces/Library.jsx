@@ -32,13 +32,13 @@ const Library = ({ fncVisibilityModal }) => {
         const fetchGames = async () => {
             try {
                 const response = await getGames();
-                setGamesData(response.games);
+                setGamesData(response.games.reverse());
             } catch (error) {
                 console.error("Error en fetch:", error);
             }
         };
         fetchGames();
-    }, []);
+    }, [refreshTrigger]);
 
     const handleChangeLayout = (newLayout) => {
         // Verificar si el nuevo diseno es diferente al ya establecido
