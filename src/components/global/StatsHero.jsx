@@ -11,9 +11,9 @@ const StatsHero = ({ data, context }) => {
                 },
                 {
                     value: data.filter(
-                        (game) => game.gameStatus === "In Progress"
+                        (game) => game.gameStatus === "Playing"
                     ).length,
-                    label: "In Progress",
+                    label: "Playing",
                 },
                 {
                     value: data.filter(
