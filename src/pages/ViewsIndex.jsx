@@ -4,39 +4,85 @@ import styles from "../styles/modules/pages/ViewsIndex.module.css";
 import "../styles/global/index.css";
 import { BrowserRouter } from "react-router-dom";
 import ModalGame from "../components/modalGame/ModalGame.jsx";
-import { addGame } from "../api/apiGames.js";
+import { addGame, updateGame, deleteGame } from "../api/apiGames.js";
 import { useEffect, useState } from "react";
 
 const ViewsIndex = () => {
     const [modalContent, setModalContent] = useState(null);
 
-    const [reqGameData, setReqGameData] = useState(null);
-    const [responseMessage, setResponseMessage] = useState(null);
+    const [reqApiData, setReqApiData] = useState({});
 
     useEffect(() => {
         const fetchGames = async () => {
-            try {
-                console.log(
-                    "Datos enviados desde ViewsIndex a addGame:",
-                    reqGameData
+            if (!reqApiData || !reqApiData.apiFunctionality) return;
+
+            const apiImports = {
+                addGame,
+                updateGame,
+                deleteGame,
+            };
+
+            let apiMethod = apiImports[reqApiData.apiFunctionality];
+            console.log("API Method to call:", reqApiData.apiFunctionality);
+            console.log("Request Data:", reqApiData);
+            console.log("API Method Function:", apiMethod);
+
+            if (!apiMethod) {
+                console.error(
+                    `API method ${reqApiData.apiFunctionality} not found`
                 );
-                const response = await addGame(reqGameData);
-                setResponseMessage(response.message);
+                return;
+            }
+
+            try {
+                let response = null;
+
+                if (
+                    reqApiData.apiFunctionality === "addGame" ||
+                    reqApiData.apiFunctionality === "updateGame"
+                ) {
+                    if (!reqApiData.gameData) {
+                        response = { message: "No game data provided" };
+                        return;
+                    } else {
+                        console.log(
+                            `Calling ${reqApiData.apiFunctionality} with`,
+                            reqApiData.gameData
+                        );
+                        response = await apiMethod(reqApiData.gameData);
+                    }
+                } else if (reqApiData.apiFunctionality === "deleteGame") {
+                    if (!reqApiData.gameId) {
+                        response = { message: "No game ID provided" };
+                        return;
+                    } else {
+                        console.log(
+                            `Calling deleteGame with`,
+                            reqApiData.gameId
+                        );
+                        response = await apiMethod(reqApiData.gameId);
+                    }
+                }
+                console.log("API response (full):", response);
+                if (response) {
+                    console.log(
+                        "Response message:",
+                        response.message ?? response
+                    );
+                } else {
+                    console.warn("No response from API (undefined/null)");
+                }
             } catch (error) {
                 console.error("Error en fetch:", error);
             }
         };
-        if (reqGameData) {
+        if (reqApiData) {
             fetchGames();
         }
-    }, [reqGameData]);
-
-    if (responseMessage) {
-        console.log("Datos recibidos en ViewsIndex:", responseMessage);
-    }
+    }, [reqApiData]);
 
     const handleReceiveReqGameData = (reqData) => {
-        setReqGameData(reqData);
+        setReqApiData(reqData);
     };
 
     // Hook para almacenar el estado de la visibilidad del modal de nuevo juego
@@ -50,6 +96,7 @@ const ViewsIndex = () => {
                     title: "Add New Game",
                     subtitle: "Add a new game to your collection",
                     bttnText: "Add Game",
+                    functionality: "addGame",
                 });
             } else if (reqContext.context === "editGame") {
                 setModalContent({
@@ -57,6 +104,7 @@ const ViewsIndex = () => {
                     subtitle: "Edit the details of your game",
                     bttnText: "Save Changes",
                     gameData: reqContext.gameData,
+                    functionality: "updateGame",
                 });
             } else if (reqContext.context === "viewGame") {
                 setModalContent({

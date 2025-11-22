@@ -64,21 +64,23 @@ const ModalGame = ({ context, onAction }) => {
 
     const handleClickActionBttn = () => {
         const reqData = {
-            gameTitle: document.getElementById("gameTitle").value || "",
+            gameTitle: document.getElementById("gameTitle")?.value || "",
             gameDescription:
-                document.getElementById("gameDescription").value || "",
-            gameGenre: document.getElementById("gameGenre").value || "",
+                document.getElementById("gameDescription")?.value || "",
+            gameGenre: document.getElementById("gameGenre")?.value || "",
             gameStatus:
                 document.getElementById("selectedStatus")?.textContent || "",
-            gamePlatform: document.getElementById("gamePlatform").value || "",
-            gameImage: document.getElementById("gameImage").value || "",
-            gameReleaseDate:
-                document.getElementById("gameReleaseDate").value || "",
+            gamePlatform: document.getElementById("gamePlatform")?.value || "",
+            gameImage: document.getElementById("gameImage")?.value || "",
+            gameReleaseDate: document.getElementById("gameReleaseDate")?.value || "",
             gameHoursPlayed:
-                document.getElementById("gameHoursPlayed").value || 0,
+                document.getElementById("gameHoursPlayed")?.value || 0,
         };
 
-        onAction.receiveReqGameData(reqData);
+        onAction.receiveReqGameData({
+            gameData: reqData,
+            apiFunctionality: context.functionality,
+        });
         onAction.fncVisibilityModal();
     };
 
@@ -119,9 +121,17 @@ const ModalGame = ({ context, onAction }) => {
                         <div className={styles.GameFormContent}>
                             {inputsConfig.map((input, index) => (
                                 <div className={styles[input.id]} key={index}>
-                                    <RegularInputModal 
-                                    config={context.gameData ? 
-                                        {...input, gameData: context.gameData} : input}  />
+                                    <RegularInputModal
+                                        config={
+                                            context.gameData
+                                                ? {
+                                                      ...input,
+                                                      gameData:
+                                                          context.gameData,
+                                                  }
+                                                : input
+                                        }
+                                    />
                                 </div>
                             ))}
                         </div>
@@ -131,14 +141,16 @@ const ModalGame = ({ context, onAction }) => {
                             className={styles.cancelButton}
                             onClick={() => onAction.fncVisibilityModal()}
                         >
-                            {context.bttnText === "Add Game" ? "Cancel" : "Close"}
+                            {context.bttnText === "Add Game"
+                                ? "Cancel"
+                                : "Close"}
                         </button>
                         {context.bttnText && (
                             <button
                                 className={styles.saveButton}
                                 onClick={() => handleClickActionBttn()}
                             >
-                                <DynamicIcon name="save" size={17} />{" "}
+                                <DynamicIcon name="save" size={17} />
                                 {context.bttnText}
                             </button>
                         )}

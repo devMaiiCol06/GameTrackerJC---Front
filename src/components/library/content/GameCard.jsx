@@ -130,7 +130,7 @@ const GameCard = ({ gameData, gameFilter, fncVisibilityModal }) => {
                         )}
                     </div>
                     <button
-                        onClick={() => fncVisibilityModal({context: "viewGame", gameData: gameData})}
+                        onClick={() => fncVisibilityModal({context: "viewGame", gameData})}
                         className={styles.gameDetailsButton}
                     >
                         View Details

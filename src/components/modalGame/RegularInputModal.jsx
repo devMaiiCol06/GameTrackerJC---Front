@@ -130,7 +130,26 @@ const RegularInputModal = ({ config }) => {
         // solo asignar value a elementos válidos
         const tag = element.tagName.toLowerCase();
         if (tag === "input" || tag === "textarea" || tag === "select") {
-            element.value = config.gameData[config.id] ?? "";
+            let value = config.gameData[config.id] ?? "";
+
+            // Normalizar valor para input[type="date"]
+            if (tag === "input" && element.type === "date" && value) {
+                // Si viene en formato ISO con 'T' (p. ej. 2006-02-23T00:00:00.000Z) convertir a YYYY-MM-DD
+                if (
+                    /\d{4}-\d{2}-\d{2}T/.test(value) ||
+                    /\d{4}-\d{2}-\d{2} \d{2}:\d{2}/.test(value)
+                ) {
+                    const parsed = new Date(value);
+                    if (!isNaN(parsed))
+                        value = parsed.toISOString().slice(0, 10);
+                } else if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+                    const parsed = new Date(value);
+                    if (!isNaN(parsed))
+                        value = parsed.toISOString().slice(0, 10);
+                }
+            }
+
+            element.value = value;
         }
     }, [config]);
 
