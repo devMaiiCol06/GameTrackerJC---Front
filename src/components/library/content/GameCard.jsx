@@ -7,13 +7,12 @@ import PC from "../../global/platforms/PC";
 import Smartphone from "../../global/platforms/Smartphone";
 import VR from "../../global/platforms/VR";
 
-const GameCard = ({ gameData, gameFilter }) => {
+const GameCard = ({ gameData, gameFilter, fncVisibilityModal }) => {
     if (gameFilter !== "All Games") {
         if (gameData.gameStatus !== gameFilter) {
             return;
         }
     }
-
     return (
         <div className={styles.GameCardContainer}>
             <div className={styles.generalGameCard}>
@@ -86,7 +85,10 @@ const GameCard = ({ gameData, gameFilter }) => {
                                             );
                                         case "Phone":
                                             return (
-                                                <Smartphone height={16} width={16} />
+                                                <Smartphone
+                                                    height={16}
+                                                    width={16}
+                                                />
                                             );
                                         case "VR":
                                             return (
@@ -127,13 +129,17 @@ const GameCard = ({ gameData, gameFilter }) => {
                             </span>
                         )}
                     </div>
-                    <button className={styles.gameDetailsButton}>
+                    <button
+                        onClick={() => fncVisibilityModal({context: "viewGame", gameData})}
+                        className={styles.gameDetailsButton}
+                    >
                         View Details
                     </button>
                 </div>
             </div>
         </div>
     );
+
 };
 
 export default GameCard;

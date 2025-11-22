@@ -1,10 +1,9 @@
 import styles from "./../../styles/modules/components/RegularInputModal.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DynamicIcon } from "lucide-react/dynamic";
-import SmoothScrollbarWrapper from "../global/SmoothScrollbarWrapper";
 
 const RegularInputModal = ({ config }) => {
-    const [selectedStatus, setSelectedStatus] = useState(null);
+    const [selectedStatus, setSelectedStatus] = useState();
 
     let categories = [
         "Action",
@@ -33,6 +32,7 @@ const RegularInputModal = ({ config }) => {
     let status = ["Completed", "Playing", "Wishlist", "Dropped"];
 
     const handleClickStatus = (newStatus) => {
+        if (config.context === "viewGame") return;
         setSelectedStatus(newStatus);
     };
 
@@ -73,12 +73,12 @@ const RegularInputModal = ({ config }) => {
                                 id={
                                     selectedStatus === stat
                                         ? "selectedStatus"
-                                        : ""
+                                        : null
                                 }
                                 className={`${
                                     selectedStatus === stat
                                         ? styles.selectedStatus
-                                        : ""
+                                        : null
                                 } ${styles.inputContent} ${statusClass}`.trim()}
                                 onClick={() => handleClickStatus(stat)}
                                 key={index}
@@ -113,6 +113,53 @@ const RegularInputModal = ({ config }) => {
             );
             break;
     }
+
+    useEffect(() => {
+        if (!config || !config.id || !config.gameData) return;
+
+        // Si el campo es "status" actualiza el estado en lugar del DOM
+        if (config.type === "status") {
+            if (config.gameData[config.id]) {
+                setSelectedStatus(config.gameData[config.id]);
+            }
+            return;
+        }
+
+        const element = document.getElementById(config.id);
+        if (!element) return;
+
+        const tag = element.tagName.toLowerCase();
+        if (tag === "input" || tag === "textarea" || tag === "select") {
+            let value = config.gameData[config.id] ?? "";
+
+            // Normalizar valor para input[type="date"]
+            if (tag === "input" && element.type === "date" && value) {
+                // Si viene en formato ISO con 'T' (p. ej. 2006-02-23T00:00:00.000Z) convertir a YYYY-MM-DD
+                if (
+                    /\d{4}-\d{2}-\d{2}T/.test(value) ||
+                    /\d{4}-\d{2}-\d{2} \d{2}:\d{2}/.test(value)
+                ) {
+                    const parsed = new Date(value);
+                    if (!isNaN(parsed))
+                        value = parsed.toISOString().slice(0, 10);
+                } else if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+                    const parsed = new Date(value);
+                    if (!isNaN(parsed))
+                        value = parsed.toISOString().slice(0, 10);
+                }
+            }
+
+            element.value = value;
+
+            if (config.context === "viewGame") {
+                element.disabled = true;
+                element.classList.add(styles.disabled);
+            } else {
+                element.disabled = false;
+                element.classList.remove(styles.disabled);
+            }
+        }
+    }, [config]);
 
     return (
         <div className={styles.RegularInputModalContainer}>

@@ -7,7 +7,7 @@ import GameCard from "../components/library/content/GameCard.jsx";
 import { useEffect, useState } from "react";
 import SmoothScrollbarWrapper from "../components/global/SmoothScrollbarWrapper.jsx";
 
-const Library = () => {
+const Library = ({ fncVisibilityModal, refreshTrigger }) => {
     // Obtener que diseno impuso el usuario temporalmente a los juegos
     let definedLayout = sessionStorage.getItem("libraryLayout");
     if (!definedLayout) {
@@ -32,13 +32,13 @@ const Library = () => {
         const fetchGames = async () => {
             try {
                 const response = await getGames();
-                setGamesData(response.games);
+                setGamesData(response.games.reverse());
             } catch (error) {
                 console.error("Error en fetch:", error);
             }
         };
         fetchGames();
-    }, []);
+    }, [refreshTrigger]);
 
     const handleChangeLayout = (newLayout) => {
         // Verificar si el nuevo diseno es diferente al ya establecido
@@ -91,6 +91,7 @@ const Library = () => {
                                 key={index}
                                 gameData={game}
                                 gameFilter={filterLibrary}
+                                fncVisibilityModal={fncVisibilityModal}
                             />
                         );
                     })}

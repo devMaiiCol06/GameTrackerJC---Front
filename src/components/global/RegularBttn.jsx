@@ -22,7 +22,7 @@ const RegularBttn = ({ configs, onAction }) => {
         ) {
             onAction(configs.textContent);
         } else if (configs.bttnContext === "modalNewGame") {
-            onAction("newGame");
+            onAction({ context: "newGame" });
         }
         return;
     };
@@ -35,7 +35,12 @@ const RegularBttn = ({ configs, onAction }) => {
             }`}
             onClick={handleClick}
         >
-            {newBttn.iconContent &&<DynamicIcon name={newBttn.iconContent} color={newBttn.iconColor} />}
+            {newBttn.iconContent && (
+                <DynamicIcon
+                    name={newBttn.iconContent}
+                    color={newBttn.iconColor}
+                />
+            )}
             {newBttn.textContent && <span>{newBttn.textContent}</span>}
         </button>
     );
