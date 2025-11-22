@@ -3,7 +3,7 @@ import { DynamicIcon } from "lucide-react/dynamic";
 import RegularInputModal from "./RegularInputModal.jsx";
 import SmoothScrollbarWrapper from "../global/SmoothScrollbarWrapper.jsx";
 
-const ModalGame = ({ heroContent, onAction }) => {
+const ModalGame = ({ context, onAction }) => {
     let inputsConfig = [
         {
             id: "gameTitle",
@@ -69,7 +69,7 @@ const ModalGame = ({ heroContent, onAction }) => {
                 document.getElementById("gameDescription").value || "",
             gameGenre: document.getElementById("gameGenre").value || "",
             gameStatus:
-                document.getElementById("selectedStatus").textContent || "",
+                document.getElementById("selectedStatus")?.textContent || "",
             gamePlatform: document.getElementById("gamePlatform").value || "",
             gameImage: document.getElementById("gameImage").value || "",
             gameReleaseDate:
@@ -82,6 +82,7 @@ const ModalGame = ({ heroContent, onAction }) => {
         onAction.fncVisibilityModal();
     };
 
+    console.log("Context en ModalGame:", context);
     return (
         <div
             className={styles.ModalGameContainer}
@@ -98,10 +99,10 @@ const ModalGame = ({ heroContent, onAction }) => {
                         />
                         <div className={styles.GameHeroText}>
                             <h2 className={styles.GameHeroTitle}>
-                                {heroContent.title}
+                                {context.title}
                             </h2>
                             <p className={styles.GameHeroDescription}>
-                                {heroContent.subtitle}
+                                {context.subtitle}
                             </p>
                         </div>
                     </div>
@@ -118,7 +119,9 @@ const ModalGame = ({ heroContent, onAction }) => {
                         <div className={styles.GameFormContent}>
                             {inputsConfig.map((input, index) => (
                                 <div className={styles[input.id]} key={index}>
-                                    <RegularInputModal config={input} />
+                                    <RegularInputModal 
+                                    config={context.gameData ? 
+                                        {...input, gameData: context.gameData} : input}  />
                                 </div>
                             ))}
                         </div>
@@ -128,14 +131,15 @@ const ModalGame = ({ heroContent, onAction }) => {
                             className={styles.cancelButton}
                             onClick={() => onAction.fncVisibilityModal()}
                         >
-                            {heroContent.bttnText ? "Cancel" : "Close"}
+                            {context.bttnText === "Add Game" ? "Cancel" : "Close"}
                         </button>
-                        {heroContent.bttnText && (
+                        {context.bttnText && (
                             <button
                                 className={styles.saveButton}
                                 onClick={() => handleClickActionBttn()}
                             >
-                                <DynamicIcon name="save" size={17} /> {heroContent.bttnText}
+                                <DynamicIcon name="save" size={17} />{" "}
+                                {context.bttnText}
                             </button>
                         )}
                     </div>

@@ -8,7 +8,7 @@ import { addGame } from "../api/apiGames.js";
 import { useEffect, useState } from "react";
 
 const ViewsIndex = () => {
-    const [modalHeroContent, setModalHeroContent] = useState(null);
+    const [modalContent, setModalContent] = useState(null);
 
     const [reqGameData, setReqGameData] = useState(null);
     const [responseMessage, setResponseMessage] = useState(null);
@@ -44,35 +44,33 @@ const ViewsIndex = () => {
 
     const handleVisibilityModalGame = (reqContext) => {
         // Cambiar la visibilidad
-        switch (visibilityModalGame) {
-            case "hidden":
-                if (reqContext === "newGame") {
-                    setModalHeroContent({
-                        title: "Add New Game",
-                        subtitle: "Add a new game to your collection",
-                        bttnText: "Add Game",
-                    });
-                } else if (reqContext === "editGame") {
-                    setModalHeroContent({
-                        title: "Edit Game",
-                        subtitle: "Edit the details of your game",
-                        bttnText: "Save Changes",
-                    });
-                } else if (reqContext === "viewGame") {
-                    setModalHeroContent({
-                        title: "Details Game",
-                        subtitle: "View the details of your game",
-                        bttnText: false,
-                    });
-                }
-                setVisibilityModalGame("show");
-                break;
-            case "show":
-                setVisibilityModalGame("hidden");
-                break;
-            default:
-                setVisibilityModalGame("hidden");
-                break;
+        if (reqContext && reqContext.context) {
+            if (reqContext.context === "newGame") {
+                setModalContent({
+                    title: "Add New Game",
+                    subtitle: "Add a new game to your collection",
+                    bttnText: "Add Game",
+                });
+            } else if (reqContext.context === "editGame") {
+                setModalContent({
+                    title: "Edit Game",
+                    subtitle: "Edit the details of your game",
+                    bttnText: "Save Changes",
+                    gameData: reqContext.gameData,
+                });
+            } else if (reqContext.context === "viewGame") {
+                setModalContent({
+                    title: "Details Game",
+                    subtitle: "View the details of your game",
+                    bttnText: "Edit Game",
+                    gameData: reqContext.gameData,
+                });
+            }
+            setVisibilityModalGame("show");
+            return;
+        } else {
+            setVisibilityModalGame("hidden");
+            setModalContent(null);
         }
     };
 
@@ -85,22 +83,22 @@ const ViewsIndex = () => {
             >
                 <Header fncVisibilityModal={handleVisibilityModalGame} />
                 <main>
-                    <Router />
+                    <Router fncVisibilityModal={handleVisibilityModalGame} />
                 </main>
             </div>
-            <div
-                className={`${styles[visibilityModalGame]} ${styles.modalFormGameContainer}`}
-            >
-                {modalHeroContent && (
+            {modalContent && (
+                <div
+                    className={`${styles[visibilityModalGame]} ${styles.modalFormGameContainer}`}
+                >
                     <ModalGame
-                        heroContent={modalHeroContent}
+                        context={modalContent}
                         onAction={{
                             fncVisibilityModal: handleVisibilityModalGame,
                             receiveReqGameData: handleReceiveReqGameData,
                         }}
                     />
-                )}
-            </div>
+                </div>
+            )}
         </BrowserRouter>
     );
 };

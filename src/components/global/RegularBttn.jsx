@@ -22,7 +22,7 @@ const RegularBttn = ({ configs, onAction }) => {
         ) {
             onAction(configs.textContent);
         } else if (configs.bttnContext === "modalNewGame") {
-            onAction("newGame");
+            onAction({context: "newGame"});
         }
         return;
     };

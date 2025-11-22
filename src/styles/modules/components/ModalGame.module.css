@@ -150,10 +150,10 @@
 }
 
 .actionBttnsContainer {
-    display: grid;
+    display: flex;
     width: 100%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     padding: 1rem;
 }
@@ -169,6 +169,7 @@
     border-radius: 10px;
     border: var(--bdr-Glass);
     cursor: pointer;
+    width: 100%;
     font-size: 14px;
 }
 
